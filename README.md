@@ -9,7 +9,12 @@ It is meant to break down many things like creating scoreboards, tablists, NPCs 
 Bukkit Extensions is modular, which means that each API is a module in itself and depends only on the api-base, <br>
 so you can include only the functions you really need on your server / in your project.
 
-## Custom Scheduler API v1
+## Examples
+
+Finally, for each module you will see an example code to understand what the intention of the module is, <br>
+whether it is useful for you or you can use it depends on you.
+
+### Custom Scheduler API v1
 
 ```java
 // Your Bukkit-Plugin Main-Class
