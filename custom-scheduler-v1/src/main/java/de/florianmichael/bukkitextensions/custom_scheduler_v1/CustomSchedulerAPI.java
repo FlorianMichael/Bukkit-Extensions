@@ -13,11 +13,11 @@ public class CustomSchedulerAPI extends BukkitExtensionBase {
         super("Custom Scheduler API", 1, "FlorianMichael");
     }
 
-    public void startTick(final String name, final long delay) {
+    public void registerTickTask(final String name, final long delay) {
         TICKER_TRACKER.put(name, new TickBase(delay));
     }
 
-    public void addTickTask(final String name, final ITicker tick) {
+    public void addTicker(final String name, final ITicker tick) {
         if (!TICKER_TRACKER.containsKey(name)) {
             this.error(new TickerNotExistsException(name));
             return;
