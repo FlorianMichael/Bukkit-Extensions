@@ -4,7 +4,9 @@ import de.florianmichael.bukkitextensions.base.BukkitExtensionBase;
 import de.florianmichael.bukkitextensions.spigot.SpigotPluginWrapper;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public class CustomSchedulerAPI extends BukkitExtensionBase {
 
@@ -13,6 +15,21 @@ public class CustomSchedulerAPI extends BukkitExtensionBase {
 
     public CustomSchedulerAPI() {
         super("Custom Scheduler API", 1, "FlorianMichael");
+    }
+
+    public void fastTicker(final long delay, final List<Runnable> executor) {
+        this.fastTicker(delay, executor, true);
+    }
+
+    public void fastTicker(final long delay, final List<Runnable> executor, final boolean start) {
+        final String theKey = UUID.randomUUID().toString();
+
+        this.registerTickTask(theKey, delay);
+
+        for (Runnable runnable : executor)
+            this.addTicker(theKey, runnable);
+
+        if (start) this.start(theKey);
     }
 
     public void delayCallback(final Runnable runnable, final long delay) {
@@ -47,8 +64,7 @@ public class CustomSchedulerAPI extends BukkitExtensionBase {
                 runnable.run();
         }, tickBase.getPeriod(), tickBase.getDelay());
 
-        if (remove)
-            TICKER_TRACKER.remove(name);
+        if (remove) TICKER_TRACKER.remove(name);
 
         BUKKIT_ID_WRITER.put(name, pId);
     }
