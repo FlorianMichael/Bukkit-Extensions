@@ -1,0 +1,4 @@
+name: Bukkit-Extensions
+version: 1.0
+author: FlorianMichael
+main: de.florianmichael.bukkitextensions.BEPlugin
