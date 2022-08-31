@@ -5,15 +5,16 @@ import java.util.List;
 
 public class TickBase {
 
-    private final List<ITicker> ticker = new ArrayList<>();
+    private final List<Runnable> ticker = new ArrayList<>();
 
     private final long delay;
+    private long period;
 
-    public TickBase(long delay) {
+    public TickBase(final long delay) {
         this.delay = delay;
     }
 
-    public void add(final ITicker ticker) {
+    public void add(final Runnable ticker) {
         this.ticker.add(ticker);
     }
 
@@ -21,7 +22,15 @@ public class TickBase {
         return delay;
     }
 
-    public List<ITicker> getTicker() {
+    public long getPeriod() {
+        return period;
+    }
+
+    public void setPeriod(long period) {
+        this.period = period;
+    }
+
+    public List<Runnable> getTicker() {
         return ticker;
     }
 }

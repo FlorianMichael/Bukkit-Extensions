@@ -1,6 +1,8 @@
 package de.florianmichael.bukkitextensions.base;
 
 import de.florianmichael.bukkitextensions.BukkitExtensions;
+import de.florianmichael.bukkitextensions.spigot.SpigotPluginWrapper;
+import org.bukkit.Server;
 
 public class BukkitExtensionBase {
 
@@ -19,6 +21,10 @@ public class BukkitExtensionBase {
 
     public void error(final Throwable throwable) {
         BukkitExtensions.self().throwError(this, throwable);
+    }
+
+    public Server bukkitServer() {
+        return SpigotPluginWrapper.instance().getServer();
     }
 
     public String getName() {
