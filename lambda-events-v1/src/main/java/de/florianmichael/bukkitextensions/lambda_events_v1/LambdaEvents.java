@@ -3,9 +3,12 @@ package de.florianmichael.bukkitextensions.lambda_events_v1;
 import de.florianmichael.bukkitextensions.base.BukkitExtensionBase;
 import de.florianmichael.bukkitextensions.lambda_events_v1.block.*;
 import de.florianmichael.bukkitextensions.lambda_events_v1.entity.*;
+import de.florianmichael.bukkitextensions.lambda_events_v1.hanging.HangingBreakByEntityListener;
+import de.florianmichael.bukkitextensions.lambda_events_v1.hanging.HangingBreakListener;
+import de.florianmichael.bukkitextensions.lambda_events_v1.hanging.HangingListener;
+import de.florianmichael.bukkitextensions.lambda_events_v1.hanging.HangingPlaceListener;
 import de.florianmichael.bukkitextensions.lambda_events_v1.player.PlayerJoinListener;
 import de.florianmichael.bukkitextensions.spigot.SpigotPluginWrapper;
-import org.bukkit.entity.Creeper;
 import org.bukkit.event.Listener;
 
 public class LambdaEvents extends BukkitExtensionBase {
@@ -120,6 +123,12 @@ public class LambdaEvents extends BukkitExtensionBase {
     private final VillagerCareerChangeListener.VillagerCareerChangeEventManager villagerCareerChangeEventManager = new VillagerCareerChangeListener.VillagerCareerChangeEventManager();
     private final VillagerReplenishTradeListener.VillagerReplenishTradeEventManager villagerReplenishTradeEventManager = new VillagerReplenishTradeListener.VillagerReplenishTradeEventManager();
 
+    // Entity Events
+    private final HangingBreakByEntityListener.HangingBreakByEntityEventManager hangingBreakByEntityEventManager = new HangingBreakByEntityListener.HangingBreakByEntityEventManager();
+    private final HangingBreakListener.HangingBreakEventManager hangingBreakEventManager = new HangingBreakListener.HangingBreakEventManager();
+    private final HangingListener.HangingEventManager hangingEventManager = new HangingListener.HangingEventManager();
+    private final HangingPlaceListener.HangingPlaceEventManager hangingPlaceEventManager = new HangingPlaceListener.HangingPlaceEventManager();
+
     // Enchant Event
     private final EnchantItemListener.EnchantItemEventManager enchantItemEventManager = new EnchantItemListener.EnchantItemEventManager();
 
@@ -130,10 +139,11 @@ public class LambdaEvents extends BukkitExtensionBase {
         super("Lambda", 1, "FlorianMichael", "Tjorven-Liebe");
     }
 
-
     private void registerListener(final Listener listener) {
         this.bukkitServer().getPluginManager().registerEvents(listener, SpigotPluginWrapper.instance());
     }
+
+    // Block Events
 
     public void invokeBlockBreakListener(final BlockBreakListener listener) {
         if (this.blockBreakEventManager.EVENT_INVOKES.isEmpty())
@@ -386,6 +396,8 @@ public class LambdaEvents extends BukkitExtensionBase {
 
         this.spongeAbsorbEventManager.EVENT_INVOKES.add(listener);
     }
+
+    // Entity Events
 
     public void invokeAreaEffectCloudApplyListener(final AreaEffectCloudApplyListener listener) {
         if (this.areaEffectCloudApplyEventManager.EVENT_INVOKES.isEmpty())
@@ -878,4 +890,51 @@ public class LambdaEvents extends BukkitExtensionBase {
         this.villagerReplenishTradeEventManager.EVENT_INVOKES.add(listener);
     }
 
+    // Hanging Events
+
+    public void invokeHangingBreakByEntityListener(final HangingBreakByEntityListener listener) {
+        if (this.hangingBreakByEntityEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.hangingBreakByEntityEventManager);
+
+        this.hangingBreakByEntityEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeHangingBreakListener(final HangingBreakListener listener) {
+        if (this.hangingBreakEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.hangingBreakEventManager);
+
+        this.hangingBreakEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeHangingListener(final HangingListener listener) {
+        if (this.hangingEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.hangingEventManager);
+
+        this.hangingEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeHangingPlaceListener(final HangingPlaceListener listener) {
+        if (this.hangingPlaceEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.hangingPlaceEventManager);
+
+        this.hangingPlaceEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    // Player Events
+
+    public void invokePlayerJoinListener(final PlayerJoinListener listener) {
+        if (this.playerJoinEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerJoinEventManager);
+
+        this.playerJoinEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    // Enchantment Event
+
+    public void invokeEnchantItemListener(final EnchantItemListener listener) {
+        if (this.enchantItemEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.enchantItemEventManager);
+
+        this.enchantItemEventManager.EVENT_INVOKES.add(listener);
+    }
 }
