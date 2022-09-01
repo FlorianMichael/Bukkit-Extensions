@@ -17,7 +17,9 @@ import de.florianmichael.bukkitextensions.lambda_events_v1.weather.LightningStri
 import de.florianmichael.bukkitextensions.lambda_events_v1.weather.ThunderChangeListener;
 import de.florianmichael.bukkitextensions.lambda_events_v1.weather.WeatherChangeListener;
 import de.florianmichael.bukkitextensions.lambda_events_v1.weather.WeatherListener;
+import de.florianmichael.bukkitextensions.lambda_events_v1.world.*;
 import de.florianmichael.bukkitextensions.spigot.SpigotPluginWrapper;
+import org.bukkit.Chunk;
 import org.bukkit.event.Listener;
 
 public class LambdaEvents extends BukkitExtensionBase {
@@ -209,8 +211,27 @@ public class LambdaEvents extends BukkitExtensionBase {
     private final WeatherChangeListener.WeatherChangeEventManager weatherChangeEventManager = new WeatherChangeListener.WeatherChangeEventManager();
     private final WeatherListener.WeatherEventManager weatherEventManager = new WeatherListener.WeatherEventManager();
 
+    // World Events
+    private final ChunkListener.ChunkEventManager chunkEventManager = new ChunkListener.ChunkEventManager();
+    private final ChunkLoadListener.ChunkLoadEventManager chunkLoadEventManager = new ChunkLoadListener.ChunkLoadEventManager();
+    private final ChunkPopulateListener.ChunkPopulateEventManager chunkPopulateEventManager = new ChunkPopulateListener.ChunkPopulateEventManager();
+    private final ChunkUnloadListener.ChunkUnloadEventManager chunkUnloadEventManager = new ChunkUnloadListener.ChunkUnloadEventManager();
+    private final EntitiesLoadListener.EntitiesLoadEventManager entitiesLoadEventManager = new EntitiesLoadListener.EntitiesLoadEventManager();
+    private final EntitiesUnloadListener.EntitiesUnloadEventManager entitiesUnloadEventManager = new EntitiesUnloadListener.EntitiesUnloadEventManager();
+    private final GenericGameListener.GenericGameEventManager genericGameEventManager = new GenericGameListener.GenericGameEventManager();
+    private final LootGenerateListener.LootGenerateEventManager lootGenerateEventManager = new LootGenerateListener.LootGenerateEventManager();
+    private final PortalCreateListener.PortalCreateEventManager portalCreateEventManager = new PortalCreateListener.PortalCreateEventManager();
+    private final SpawnChangeListener.SpawnChangeEventManager spawnChangeEventManager = new SpawnChangeListener.SpawnChangeEventManager();
+    private final StructureGrowListener.StructureGrowEventManager structureGrowEventManager = new StructureGrowListener.StructureGrowEventManager();
+    private final TimeSkipListener.TimeSkipEventManager timeSkipEventManager = new TimeSkipListener.TimeSkipEventManager();
+    private final WorldListener.WorldEventManager worldEventManager = new WorldListener.WorldEventManager();
+    private final WorldInitListener.WorldInitEventManager worldInitEventManager = new WorldInitListener.WorldInitEventManager();
+    private final WorldLoadListener.WorldLoadEventManager worldLoadEventManager = new WorldLoadListener.WorldLoadEventManager();
+    private final WorldSaveListener.WorldSaveEventManager worldSaveEventManager = new WorldSaveListener.WorldSaveEventManager();
+    private final WorldUnloadListener.WorldUnloadEventManager worldUnloadEventManager = new WorldUnloadListener.WorldUnloadEventManager();
+
     public LambdaEvents() {
-        super("Lambda", 1, "FlorianMichael", "Tjorven-Liebe");
+        super("Lambda Events", 1, "FlorianMichael", "Tjorven-Liebe");
     }
 
     private void registerListener(final Listener listener) {
@@ -1395,5 +1416,125 @@ public class LambdaEvents extends BukkitExtensionBase {
             this.registerListener(this.weatherEventManager);
 
         this.weatherEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    // World Events
+    public void invokeChunkListener(final ChunkListener listener) {
+        if (this.chunkEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.chunkEventManager);
+
+        this.chunkEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeChunkLoadListener(final ChunkLoadListener listener) {
+        if (this.chunkLoadEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.chunkLoadEventManager);
+
+        this.chunkLoadEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeChunkPopulateListener(final ChunkPopulateListener listener) {
+        if (this.chunkPopulateEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.chunkPopulateEventManager);
+
+        this.chunkPopulateEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeChunkUnloadListener(final ChunkUnloadListener listener) {
+        if (this.chunkUnloadEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.chunkUnloadEventManager);
+
+        this.chunkUnloadEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntitiesLoadListener(final EntitiesLoadListener listener) {
+        if (this.entitiesLoadEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entitiesLoadEventManager);
+
+        this.entitiesLoadEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntitiesUnloadListener(final EntitiesUnloadListener listener) {
+        if (this.entitiesUnloadEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entitiesUnloadEventManager);
+
+        this.entitiesUnloadEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeGenericGameListener(final GenericGameListener listener) {
+        if (this.genericGameEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.genericGameEventManager);
+
+        this.genericGameEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeLootGenerateListener(final LootGenerateListener listener) {
+        if (this.lootGenerateEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.lootGenerateEventManager);
+
+        this.lootGenerateEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePortalCreateListener(final PortalCreateListener listener) {
+        if (this.portalCreateEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.portalCreateEventManager);
+
+        this.portalCreateEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeSpawnChangeListener(final SpawnChangeListener listener) {
+        if (this.spawnChangeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.spawnChangeEventManager);
+
+        this.spawnChangeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeStructureGrowListener(final StructureGrowListener listener) {
+        if (this.structureGrowEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.structureGrowEventManager);
+
+        this.structureGrowEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeTimeSkipListener(final TimeSkipListener listener) {
+        if (this.timeSkipEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.timeSkipEventManager);
+
+        this.timeSkipEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeWorldListener(final WorldListener listener) {
+        if (this.worldEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.worldEventManager);
+
+        this.worldEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeWorldInitListener(final WorldInitListener listener) {
+        if (this.worldInitEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.worldInitEventManager);
+
+        this.worldInitEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeWorldLoadListener(final WorldLoadListener listener) {
+        if (this.worldLoadEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.worldLoadEventManager);
+
+        this.worldLoadEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeWorldSaveListener(final WorldSaveListener listener) {
+        if (this.worldSaveEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.worldSaveEventManager);
+
+        this.worldSaveEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeWorldUnloadListener(final WorldUnloadListener listener) {
+        if (this.worldUnloadEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.worldUnloadEventManager);
+
+        this.worldUnloadEventManager.EVENT_INVOKES.add(listener);
     }
 }
