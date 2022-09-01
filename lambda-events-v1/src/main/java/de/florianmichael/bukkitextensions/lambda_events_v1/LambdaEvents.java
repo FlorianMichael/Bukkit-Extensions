@@ -7,6 +7,7 @@ import de.florianmichael.bukkitextensions.lambda_events_v1.hanging.HangingBreakB
 import de.florianmichael.bukkitextensions.lambda_events_v1.hanging.HangingBreakListener;
 import de.florianmichael.bukkitextensions.lambda_events_v1.hanging.HangingListener;
 import de.florianmichael.bukkitextensions.lambda_events_v1.hanging.HangingPlaceListener;
+import de.florianmichael.bukkitextensions.lambda_events_v1.inventory.*;
 import de.florianmichael.bukkitextensions.lambda_events_v1.player.PlayerJoinListener;
 import de.florianmichael.bukkitextensions.lambda_events_v1.raid.*;
 import de.florianmichael.bukkitextensions.spigot.SpigotPluginWrapper;
@@ -134,6 +135,27 @@ public class LambdaEvents extends BukkitExtensionBase {
     private final HangingPlaceListener.HangingPlaceEventManager hangingPlaceEventManager = new HangingPlaceListener.HangingPlaceEventManager();
 
     // Inventory Events
+    private final BrewingStandFuelListener.BrewingStandFuelEventManager brewingStandFuelEventManager = new BrewingStandFuelListener.BrewingStandFuelEventManager();
+    private final BrewListener.BrewEventManager brewEventManager = new BrewListener.BrewEventManager();
+    private final CraftItemListener.CraftItemEventManager craftItemEventManager = new CraftItemListener.CraftItemEventManager();
+    private final FurnaceBurnListener.FurnaceBurnEventManager furnaceBurnEventManager = new FurnaceBurnListener.FurnaceBurnEventManager();
+    private final FurnaceExtractListener.FurnaceExtractEventManager furnaceExtractEventManager = new FurnaceExtractListener.FurnaceExtractEventManager();
+    private final FurnaceSmeltListener.FurnaceSmeltEventManager furnaceSmeltEventManager = new FurnaceSmeltListener.FurnaceSmeltEventManager();
+    private final FurnaceStartSmeltListener.FurnaceStartSmeltEventManager furnaceStartSmeltEventManager = new FurnaceStartSmeltListener.FurnaceStartSmeltEventManager();
+    private final InventoryClickListener.InventoryClickEventManager inventoryClickEventManager = new InventoryClickListener.InventoryClickEventManager();
+    private final InventoryCloseListener.InventoryCloseEventManager inventoryCloseEventManager = new InventoryCloseListener.InventoryCloseEventManager();
+    private final InventoryCreativeListener.InventoryCreativeEventManager inventoryCreativeEventManager = new InventoryCreativeListener.InventoryCreativeEventManager();
+    private final InventoryDragListener.InventoryDragEventManager inventoryDragEventManager = new InventoryDragListener.InventoryDragEventManager();
+    private final InventoryInteractListener.InventoryInteractEventManager inventoryInteractEventManager = new InventoryInteractListener.InventoryInteractEventManager();
+    private final InventoryListener.InventoryEventManager inventoryEventManager = new InventoryListener.InventoryEventManager();
+    private final InventoryMoveItemListener.InventoryMoveItemEventManager inventoryMoveItemEventManager = new InventoryMoveItemListener.InventoryMoveItemEventManager();
+    private final InventoryOpenListener.InventoryOpenEventManager inventoryOpenEventManager = new InventoryOpenListener.InventoryOpenEventManager();
+    private final InventoryPickupItemListener.InventoryPickupItemEventManager inventoryPickupItemEventManager = new InventoryPickupItemListener.InventoryPickupItemEventManager();
+    private final PrepareAnvilListener.PrepareAnvilEventManager prepareAnvilEventManager = new PrepareAnvilListener.PrepareAnvilEventManager();
+    private final PrepareItemCraftListener.PrepareItemCraftEventManager prepareItemCraftEventManager = new PrepareItemCraftListener.PrepareItemCraftEventManager();
+    private final PrepareSmithingListener.PrepareSmithingEventManager prepareSmithingEventManager = new PrepareSmithingListener.PrepareSmithingEventManager();
+    private final SmithItemListener.SmithItemEventManager smithItemEventManager = new SmithItemListener.SmithItemEventManager();
+    private final TradeSelectListener.TradeSelectEventManager tradeSelectEventManager = new TradeSelectListener.TradeSelectEventManager();
 
     // Player Events
     private final PlayerJoinListener.PlayerJoinEventManager playerJoinEventManager = new PlayerJoinListener.PlayerJoinEventManager();
@@ -941,6 +963,152 @@ public class LambdaEvents extends BukkitExtensionBase {
 
     // Inventory Events
 
+    public void invokeBrewingStandFuelListener(final BrewingStandFuelListener listener) {
+        if (this.brewingStandFuelEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.brewingStandFuelEventManager);
+
+        this.brewingStandFuelEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeBrewListener(final BrewListener listener) {
+        if (this.brewEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.brewEventManager);
+
+        this.brewEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeCraftItemListener(final CraftItemListener listener) {
+        if (this.craftItemEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.craftItemEventManager);
+
+        this.craftItemEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeFurnaceBurnListener(final FurnaceBurnListener listener) {
+        if (this.furnaceBurnEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.furnaceBurnEventManager);
+
+        this.furnaceBurnEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeFurnaceExtractListener(final FurnaceExtractListener listener) {
+        if (this.furnaceExtractEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.furnaceExtractEventManager);
+
+        this.furnaceExtractEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeFurnaceSmeltListener(final FurnaceSmeltListener listener) {
+        if (this.furnaceSmeltEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.furnaceSmeltEventManager);
+
+        this.furnaceSmeltEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeFurnaceStartSmeltListener(final FurnaceStartSmeltListener listener) {
+        if (this.furnaceStartSmeltEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.furnaceStartSmeltEventManager);
+
+        this.furnaceStartSmeltEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeInventoryClickListener(final InventoryClickListener listener) {
+        if (this.inventoryClickEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.inventoryClickEventManager);
+
+        this.inventoryClickEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeInventoryCloseListener(final InventoryCloseListener listener) {
+        if (this.inventoryCloseEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.inventoryCloseEventManager);
+
+        this.inventoryCloseEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeInventoryCreativeListener(final InventoryCreativeListener listener) {
+        if (this.inventoryCreativeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.inventoryCreativeEventManager);
+
+        this.inventoryCreativeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeInventoryDragListener(final InventoryDragListener listener) {
+        if (this.inventoryDragEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.inventoryDragEventManager);
+
+        this.inventoryDragEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeInventoryInteractListener(final InventoryInteractListener listener) {
+        if (this.inventoryInteractEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.inventoryInteractEventManager);
+
+        this.inventoryInteractEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeInventoryListener(final InventoryListener listener) {
+        if (this.inventoryEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.inventoryEventManager);
+
+        this.inventoryEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeInventoryMoveItemListener(final InventoryMoveItemListener listener) {
+        if (this.inventoryMoveItemEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.inventoryMoveItemEventManager);
+
+        this.inventoryMoveItemEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeInventoryOpenListener(final InventoryOpenListener listener) {
+        if (this.inventoryOpenEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.inventoryOpenEventManager);
+
+        this.inventoryOpenEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeInventoryPickupItemListener(final InventoryPickupItemListener listener) {
+        if (this.inventoryPickupItemEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.inventoryPickupItemEventManager);
+
+        this.inventoryPickupItemEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePrepareAnvilListener(final PrepareAnvilListener listener) {
+        if (this.prepareAnvilEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.prepareAnvilEventManager);
+
+        this.prepareAnvilEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePrepareItemCraftListener(final PrepareItemCraftListener listener) {
+        if (this.prepareItemCraftEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.prepareItemCraftEventManager);
+
+        this.prepareItemCraftEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePrepareSmithingListener(final PrepareSmithingListener listener) {
+        if (this.prepareSmithingEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.prepareSmithingEventManager);
+
+        this.prepareSmithingEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeSmithItemListener(final SmithItemListener listener) {
+        if (this.smithItemEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.smithItemEventManager);
+
+        this.smithItemEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeTradeSelectListener(final TradeSelectListener listener) {
+        if (this.tradeSelectEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.tradeSelectEventManager);
+
+        this.tradeSelectEventManager.EVENT_INVOKES.add(listener);
+    }
 
     // Player Events
 
