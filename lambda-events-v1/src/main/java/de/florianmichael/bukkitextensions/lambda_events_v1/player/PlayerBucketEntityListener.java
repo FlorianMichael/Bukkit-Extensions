@@ -12,7 +12,7 @@ public interface PlayerBucketEntityListener {
 
     void onInvoke(final PlayerBucketEntityEvent event);
 
-    class PlayerBucketEmptyEventManager implements Listener {
+    class PlayerBucketEntityEventManager implements Listener {
 
         public final List<PlayerBucketEntityListener> EVENT_INVOKES = new ArrayList<>();
 

@@ -9,7 +9,7 @@ import de.florianmichael.bukkitextensions.lambda_events_v1.hanging.HangingBreakL
 import de.florianmichael.bukkitextensions.lambda_events_v1.hanging.HangingListener;
 import de.florianmichael.bukkitextensions.lambda_events_v1.hanging.HangingPlaceListener;
 import de.florianmichael.bukkitextensions.lambda_events_v1.inventory.*;
-import de.florianmichael.bukkitextensions.lambda_events_v1.player.PlayerJoinListener;
+import de.florianmichael.bukkitextensions.lambda_events_v1.player.*;
 import de.florianmichael.bukkitextensions.lambda_events_v1.raid.*;
 import de.florianmichael.bukkitextensions.lambda_events_v1.server.*;
 import de.florianmichael.bukkitextensions.lambda_events_v1.vehicle.*;
@@ -168,7 +168,71 @@ public class LambdaEvents extends BukkitExtensionBase {
     private final TradeSelectListener.TradeSelectEventManager tradeSelectEventManager = new TradeSelectListener.TradeSelectEventManager();
 
     // Player Events
+    private final AsyncPlayerChatListener.AsyncPlayerChatEventManager asyncPlayerChatEventManager = new AsyncPlayerChatListener.AsyncPlayerChatEventManager();
+    private final AsyncPlayerChatPreviewListener.AsyncPlayerChatPreviewEventManager asyncPlayerChatPreviewEventManager = new AsyncPlayerChatPreviewListener.AsyncPlayerChatPreviewEventManager();
+    private final AsyncPlayerPreLoginListener.AsyncPlayerPreLoginEventManager asyncPlayerPreLoginEventManager = new AsyncPlayerPreLoginListener.AsyncPlayerPreLoginEventManager();
+    private final PlayerAdvancementDoneListener.PlayerAdvancementDoneEventManager playerAdvancementDoneEventManager = new PlayerAdvancementDoneListener.PlayerAdvancementDoneEventManager();
+    private final PlayerAnimationListener.PlayerAnimationEventManager playerAnimationEventManager = new PlayerAnimationListener.PlayerAnimationEventManager();
+    private final PlayerArmorStandManipulateListener.PlayerArmorStandManipulateEventManager playerArmorStandManipulateEventManager = new PlayerArmorStandManipulateListener.PlayerArmorStandManipulateEventManager();
+    private final PlayerBedEnterListener.PlayerBedEnterEventManager playerBedEnterEventManager = new PlayerBedEnterListener.PlayerBedEnterEventManager();
+    private final PlayerBedLeaveListener.PlayerBedLeaveEventManager playerBedLeaveEventManager = new PlayerBedLeaveListener.PlayerBedLeaveEventManager();
+    private final PlayerBucketEmptyListener.PlayerBucketEmptyEventManager playerBucketEmptyEventManager = new PlayerBucketEmptyListener.PlayerBucketEmptyEventManager();
+    private final PlayerBucketEntityListener.PlayerBucketEntityEventManager playerBucketEntityEventManager = new PlayerBucketEntityListener.PlayerBucketEntityEventManager();
+    private final PlayerBucketFillListener.PlayerBucketFillEventManager playerBucketFillEventManager = new PlayerBucketFillListener.PlayerBucketFillEventManager();
+    private final PlayerBucketFishListener.PlayerBucketFishEventManager playerBucketFishEventManager = new PlayerBucketFishListener.PlayerBucketFishEventManager();
+    private final PlayerBucketListener.PlayerBucketEventManager playerBucketEventManager = new PlayerBucketListener.PlayerBucketEventManager();
+    private final PlayerChangedMainHandListener.PlayerChangedMainHandEventManager playerChangedMainHandEventManager = new PlayerChangedMainHandListener.PlayerChangedMainHandEventManager();
+    private final PlayerChangedWorldListener.PlayerChangedWorldEventManager playerChangedWorldEventManager = new PlayerChangedWorldListener.PlayerChangedWorldEventManager();
+    private final PlayerChannelListener.PlayerChannelEventManager playerChannelEventManager = new PlayerChannelListener.PlayerChannelEventManager();
+    private final PlayerChatListener.PlayerChatEventManager playerChatEventManager = new PlayerChatListener.PlayerChatEventManager();
+    private final PlayerChatTabCompleteListener.PlayerChatTabCompleteEventManager playerChatTabCompleteEventManager = new PlayerChatTabCompleteListener.PlayerChatTabCompleteEventManager();
+    private final PlayerCommandPreprocessListener.PlayerCommandPreprocessEventManager playerCommandPreprocessEventManager = new PlayerCommandPreprocessListener.PlayerCommandPreprocessEventManager();
+    private final PlayerCommandSendListener.PlayerCommandSendEventManager playerCommandSendEventManager = new PlayerCommandSendListener.PlayerCommandSendEventManager();
+    private final PlayerDropItemListener.PlayerDropItemEventManager playerDropItemEventManager = new PlayerDropItemListener.PlayerDropItemEventManager();
+    private final PlayerEditBookListener.PlayerEditBookEventManager playerEditBookEventManager = new PlayerEditBookListener.PlayerEditBookEventManager();
+    private final PlayerEggThrowListener.PlayerEggThrowEventManager playerEggThrowEventManager = new PlayerEggThrowListener.PlayerEggThrowEventManager();
+    private final PlayerExpChangeListener.PlayerExpChangeEventManager playerExpChangeEventManager = new PlayerExpChangeListener.PlayerExpChangeEventManager();
+    private final PlayerFishListener.PlayerFishEventManager playerFishEventManager = new PlayerFishListener.PlayerFishEventManager();
+    private final PlayerGameModeChangeListener.PlayerGameModeChangeEventManager playerGameModeChangeEventManager = new PlayerGameModeChangeListener.PlayerGameModeChangeEventManager();
+    private final PlayerHarvestBlockListener.PlayerHarvestBlockEventManager playerHarvestBlockEventManager = new PlayerHarvestBlockListener.PlayerHarvestBlockEventManager();
+    private final PlayerHideEntityListener.PlayerHideEntityEventManager playerHideEntityEventManager = new PlayerHideEntityListener.PlayerHideEntityEventManager();
+    private final PlayerInteractAtEntityListener.PlayerInteractAtEntityEventManager playerInteractAtEntityEventManager = new PlayerInteractAtEntityListener.PlayerInteractAtEntityEventManager();
+    private final PlayerInteractEntityListener.PlayerInteractEntityEventManager playerInteractEntityEventManager = new PlayerInteractEntityListener.PlayerInteractEntityEventManager();
+    private final PlayerInteractListener.PlayerInteractEventManager playerInteractEventManager = new PlayerInteractListener.PlayerInteractEventManager();
+    private final PlayerItemBreakListener.PlayerItemBreakEventManager playerItemBreakEventManager = new PlayerItemBreakListener.PlayerItemBreakEventManager();
+    private final PlayerItemConsumeListener.PlayerItemConsumeEventManager playerItemConsumeEventManager = new PlayerItemConsumeListener.PlayerItemConsumeEventManager();
+    private final PlayerItemDamageListener.PlayerItemDamageEventManager playerItemDamageEventManager = new PlayerItemDamageListener.PlayerItemDamageEventManager();
+    private final PlayerItemHeldListener.PlayerItemHeldEventManager playerItemHeldEventManager = new PlayerItemHeldListener.PlayerItemHeldEventManager();
+    private final PlayerItemMendListener.PlayerItemMendEventManager playerItemMendEventManager = new PlayerItemMendListener.PlayerItemMendEventManager();
     private final PlayerJoinListener.PlayerJoinEventManager playerJoinEventManager = new PlayerJoinListener.PlayerJoinEventManager();
+    private final PlayerKickListener.PlayerKickEventManager playerKickEventManager = new PlayerKickListener.PlayerKickEventManager();
+    private final PlayerLevelChangeListener.PlayerLevelChangeEventManager playerLevelChangeEventManager = new PlayerLevelChangeListener.PlayerLevelChangeEventManager();
+    private final PlayerListener.PlayerEventManager playerEventManager = new PlayerListener.PlayerEventManager();
+    private final PlayerLocaleChangeListener.PlayerLocaleChangeEventManager playerLocaleChangeEventManager = new PlayerLocaleChangeListener.PlayerLocaleChangeEventManager();
+    private final PlayerPickupArrowListener.PlayerPickupArrowEventManager playerPickupArrowEventManager = new PlayerPickupArrowListener.PlayerPickupArrowEventManager();
+    private final PlayerLoginListener.PlayerLoginEventManager playerLoginEventManager = new PlayerLoginListener.PlayerLoginEventManager();
+    private final PlayerMoveListener.PlayerMoveEventManager playerMoveEventManager = new PlayerMoveListener.PlayerMoveEventManager();
+    private final PlayerPickupItemListener.PlayerPickupItemEventManager playerPickupItemEventManager = new PlayerPickupItemListener.PlayerPickupItemEventManager();
+    private final PlayerPortalListener.PlayerPortalEventManager playerPortalEventManager = new PlayerPortalListener.PlayerPortalEventManager();
+    private final PlayerPreLoginListener.PlayerPreLoginEventManager playerPreLoginEventManager = new PlayerPreLoginListener.PlayerPreLoginEventManager();
+    private final PlayerQuitListener.PlayerQuitEventManager playerQuitEventManager = new PlayerQuitListener.PlayerQuitEventManager();
+    private final PlayerRecipeDiscoverListener.PlayerRecipeDiscoverEventManager playerRecipeDiscoverEventManager = new PlayerRecipeDiscoverListener.PlayerRecipeDiscoverEventManager();
+    private final PlayerRegisterChannelListener.PlayerRegisterChannelEventManager playerRegisterChannelEventManager = new PlayerRegisterChannelListener.PlayerRegisterChannelEventManager();
+    private final PlayerResourcePackStatusListener.PlayerResourcePackStatusEventManager playerResourcePackStatusEventManager = new PlayerResourcePackStatusListener.PlayerResourcePackStatusEventManager();
+    private final PlayerRespawnListener.PlayerRespawnEventManager playerRespawnEventManager = new PlayerRespawnListener.PlayerRespawnEventManager();
+    private final PlayerRiptideListener.PlayerRiptideEventManager playerRiptideEventManager = new PlayerRiptideListener.PlayerRiptideEventManager();
+    private final PlayerShearEntityListener.PlayerShearEntityEventManager playerShearEntityEventManager = new PlayerShearEntityListener.PlayerShearEntityEventManager();
+    private final PlayerShowEntityListener.PlayerShowEntityEventManager playerShowEntityEventManager = new PlayerShowEntityListener.PlayerShowEntityEventManager();
+    private final PlayerStatisticIncrementListener.PlayerStatisticIncrementEventManager playerStatisticIncrementEventManager = new PlayerStatisticIncrementListener.PlayerStatisticIncrementEventManager();
+    private final PlayerSwapHandItemsListener.PlayerSwapHandItemsEventManager playerSwapHandItemsEventManager = new PlayerSwapHandItemsListener.PlayerSwapHandItemsEventManager();
+    private final PlayerTakeLecternBookListener.PlayerTakeLecternBookEventManager playerTakeLecternBookEventManager = new PlayerTakeLecternBookListener.PlayerTakeLecternBookEventManager();
+    private final PlayerTeleportListener.PlayerTeleportEventManager playerTeleportEventManager = new PlayerTeleportListener.PlayerTeleportEventManager();
+    private final PlayerToggleFlightListener.PlayerToggleFlightEventManager playerToggleFlightEventManager = new PlayerToggleFlightListener.PlayerToggleFlightEventManager();
+    private final PlayerToggleSneakListener.PlayerToggleSneakEventManager playerToggleSneakEventManager = new PlayerToggleSneakListener.PlayerToggleSneakEventManager();
+    private final PlayerToggleSprintListener.PlayerToggleSprintEventManager playerToggleSprintEventManager = new PlayerToggleSprintListener.PlayerToggleSprintEventManager();
+    private final PlayerUnleashEntityListener.PlayerUnleashEntityEventManager playerUnleashEntityEventManager = new PlayerUnleashEntityListener.PlayerUnleashEntityEventManager();
+    private final PlayerUnregisterChannelListener.PlayerUnregisterChannelEventManager playerUnregisterChannelEventManager = new PlayerUnregisterChannelListener.PlayerUnregisterChannelEventManager();
+    private final PlayerVelocityListener.PlayerVelocityEventManager playerVelocityEventManager = new PlayerVelocityListener.PlayerVelocityEventManager();
 
     // Raid Events
     private final RaidListener.RaidEventManager raidEventManager = new RaidListener.RaidEventManager();
@@ -1181,11 +1245,459 @@ public class LambdaEvents extends BukkitExtensionBase {
     }
 
     // Player Events
+    public void invokeAsyncPlayerChatListener(final AsyncPlayerChatListener listener) {
+        if (this.asyncPlayerChatEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.asyncPlayerChatEventManager);
+
+        this.asyncPlayerChatEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeAsyncPlayerChatPreviewListener(final AsyncPlayerChatPreviewListener listener) {
+        if (this.asyncPlayerChatPreviewEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.asyncPlayerChatPreviewEventManager);
+
+        this.asyncPlayerChatPreviewEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeAsyncPlayerPreLoginListener(final AsyncPlayerPreLoginListener listener) {
+        if (this.asyncPlayerPreLoginEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.asyncPlayerPreLoginEventManager);
+
+        this.asyncPlayerPreLoginEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerAdvancementDoneListener(final PlayerAdvancementDoneListener listener) {
+        if (this.playerAdvancementDoneEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerAdvancementDoneEventManager);
+
+        this.playerAdvancementDoneEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerAnimationListener(final PlayerAnimationListener listener) {
+        if (this.playerAnimationEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerAnimationEventManager);
+
+        this.playerAnimationEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerArmorStandManipulateListener(final PlayerArmorStandManipulateListener listener) {
+        if (this.playerArmorStandManipulateEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerArmorStandManipulateEventManager);
+
+        this.playerArmorStandManipulateEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerBedEnterListener(final PlayerBedEnterListener listener) {
+        if (this.playerBedEnterEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerBedEnterEventManager);
+
+        this.playerBedEnterEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerBedLeaveListener(final PlayerBedLeaveListener listener) {
+        if (this.playerBedLeaveEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerBedLeaveEventManager);
+
+        this.playerBedLeaveEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerBucketEmptyListener(final PlayerBucketEmptyListener listener) {
+        if (this.playerBucketEmptyEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerBucketEmptyEventManager);
+
+        this.playerBucketEmptyEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerBucketEntityListener(final PlayerBucketEntityListener listener) {
+        if (this.playerBucketEntityEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerBucketEntityEventManager);
+
+        this.playerBucketEntityEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerBucketFillListener(final PlayerBucketFillListener listener) {
+        if (this.playerBucketFillEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerBucketFillEventManager);
+
+        this.playerBucketFillEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerBucketFishListener(final PlayerBucketFishListener listener) {
+        if (this.playerBucketFishEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerBucketFishEventManager);
+
+        this.playerBucketFishEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerBucketListener(final PlayerBucketListener listener) {
+        if (this.playerBucketEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerBucketEventManager);
+
+        this.playerBucketEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerChangedMainHandListener(final PlayerChangedMainHandListener listener) {
+        if (this.playerChangedMainHandEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerChangedMainHandEventManager);
+
+        this.playerChangedMainHandEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerChangedWorldListener(final PlayerChangedWorldListener listener) {
+        if (this.playerChangedWorldEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerChangedWorldEventManager);
+
+        this.playerChangedWorldEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerChannelListener(final PlayerChannelListener listener) {
+        if (this.playerChannelEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerChannelEventManager);
+
+        this.playerChannelEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerChatListener(final PlayerChatListener listener) {
+        if (this.playerChatEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerChatEventManager);
+
+        this.playerChatEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerChatTabCompleteListener(final PlayerChatTabCompleteListener listener) {
+        if (this.playerChatTabCompleteEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerChatTabCompleteEventManager);
+
+        this.playerChatTabCompleteEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerCommandPreprocessListener(final PlayerCommandPreprocessListener listener) {
+        if (this.playerCommandPreprocessEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerCommandPreprocessEventManager);
+
+        this.playerCommandPreprocessEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerCommandSendListener(final PlayerCommandSendListener listener) {
+        if (this.playerCommandSendEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerCommandSendEventManager);
+
+        this.playerCommandSendEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerDropItemListener(final PlayerDropItemListener listener) {
+        if (this.playerDropItemEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerDropItemEventManager);
+
+        this.playerDropItemEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerEditBookListener(final PlayerEditBookListener listener) {
+        if (this.playerEditBookEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerEditBookEventManager);
+
+        this.playerEditBookEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerEggThrowListener(final PlayerEggThrowListener listener) {
+        if (this.playerEggThrowEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerEggThrowEventManager);
+
+        this.playerEggThrowEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerExpChangeListener(final PlayerExpChangeListener listener) {
+        if (this.playerExpChangeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerExpChangeEventManager);
+
+        this.playerExpChangeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerFishListener(final PlayerFishListener listener) {
+        if (this.playerFishEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerFishEventManager);
+
+        this.playerFishEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerGameModeChangeListener(final PlayerGameModeChangeListener listener) {
+        if (this.playerGameModeChangeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerGameModeChangeEventManager);
+
+        this.playerGameModeChangeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerHarvestBlockListener(final PlayerHarvestBlockListener listener) {
+        if (this.playerHarvestBlockEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerHarvestBlockEventManager);
+
+        this.playerHarvestBlockEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerHideEntityListener(final PlayerHideEntityListener listener) {
+        if (this.playerHideEntityEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerHideEntityEventManager);
+
+        this.playerHideEntityEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerInteractAtEntityListener(final PlayerInteractAtEntityListener listener) {
+        if (this.playerInteractAtEntityEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerInteractAtEntityEventManager);
+
+        this.playerInteractAtEntityEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerInteractEntityListener(final PlayerInteractEntityListener listener) {
+        if (this.playerInteractEntityEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerInteractEntityEventManager);
+
+        this.playerInteractEntityEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerInteractListener(final PlayerInteractListener listener) {
+        if (this.playerInteractEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerInteractEventManager);
+
+        this.playerInteractEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerItemBreakListener(final PlayerItemBreakListener listener) {
+        if (this.playerItemBreakEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerItemBreakEventManager);
+
+        this.playerItemBreakEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerItemConsumeListener(final PlayerItemConsumeListener listener) {
+        if (this.playerItemConsumeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerItemConsumeEventManager);
+
+        this.playerItemConsumeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerItemDamageListener(final PlayerItemDamageListener listener) {
+        if (this.playerItemDamageEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerItemDamageEventManager);
+
+        this.playerItemDamageEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerItemHeldListener(final PlayerItemHeldListener listener) {
+        if (this.playerItemHeldEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerItemHeldEventManager);
+
+        this.playerItemHeldEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerItemMendListener(final PlayerItemMendListener listener) {
+        if (this.playerItemMendEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerItemMendEventManager);
+
+        this.playerItemMendEventManager.EVENT_INVOKES.add(listener);
+    }
+
     public void invokePlayerJoinListener(final PlayerJoinListener listener) {
         if (this.playerJoinEventManager.EVENT_INVOKES.isEmpty())
             this.registerListener(this.playerJoinEventManager);
 
         this.playerJoinEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerKickListener(final PlayerKickListener listener) {
+        if (this.playerKickEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerKickEventManager);
+
+        this.playerKickEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerLevelChangeListener(final PlayerLevelChangeListener listener) {
+        if (this.playerLevelChangeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerLevelChangeEventManager);
+
+        this.playerLevelChangeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerListener(final PlayerListener listener) {
+        if (this.playerEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerEventManager);
+
+        this.playerEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerLocaleChangeListener(final PlayerLocaleChangeListener listener) {
+        if (this.playerLocaleChangeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerLocaleChangeEventManager);
+
+        this.playerLocaleChangeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerLoginListener(final PlayerLoginListener listener) {
+        if (this.playerLoginEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerLoginEventManager);
+
+        this.playerLoginEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerMoveListener(final PlayerMoveListener listener) {
+        if (this.playerMoveEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerMoveEventManager);
+
+        this.playerMoveEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerPickupArrowListener(final PlayerPickupArrowListener listener) {
+        if (this.playerPickupArrowEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerPickupArrowEventManager);
+
+        this.playerPickupArrowEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerPickupItemListener(final PlayerPickupItemListener listener) {
+        if (this.playerPickupItemEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerPickupItemEventManager);
+
+        this.playerPickupItemEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerPortalListener(final PlayerPortalListener listener) {
+        if (this.playerPortalEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerPortalEventManager);
+
+        this.playerPortalEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerPreLoginListener(final PlayerPreLoginListener listener) {
+        if (this.playerPreLoginEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerPreLoginEventManager);
+
+        this.playerPreLoginEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerQuitListener(final PlayerQuitListener listener) {
+        if (this.playerQuitEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerQuitEventManager);
+
+        this.playerQuitEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerRecipeDiscoverListener(final PlayerRecipeDiscoverListener listener) {
+        if (this.playerRecipeDiscoverEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerRecipeDiscoverEventManager);
+
+        this.playerRecipeDiscoverEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerRegisterChannelListener(final PlayerRegisterChannelListener listener) {
+        if (this.playerRegisterChannelEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerRegisterChannelEventManager);
+
+        this.playerRegisterChannelEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerResourcePackStatusListener(final PlayerResourcePackStatusListener listener) {
+        if (this.playerResourcePackStatusEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerResourcePackStatusEventManager);
+
+        this.playerResourcePackStatusEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerRespawnListener(final PlayerRespawnListener listener) {
+        if (this.playerRespawnEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerRespawnEventManager);
+
+        this.playerRespawnEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerRiptideListener(final PlayerRiptideListener listener) {
+        if (this.playerRiptideEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerRiptideEventManager);
+
+        this.playerRiptideEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerShearEntityListener(final PlayerShearEntityListener listener) {
+        if (this.playerShearEntityEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerShearEntityEventManager);
+
+        this.playerShearEntityEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerShowEntityListener(final PlayerShowEntityListener listener) {
+        if (this.playerShowEntityEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerShowEntityEventManager);
+
+        this.playerShowEntityEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerStatisticIncrementListener(final PlayerStatisticIncrementListener listener) {
+        if (this.playerStatisticIncrementEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerStatisticIncrementEventManager);
+
+        this.playerStatisticIncrementEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerSwapHandItemsListener(final PlayerSwapHandItemsListener listener) {
+        if (this.playerSwapHandItemsEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerSwapHandItemsEventManager);
+
+        this.playerSwapHandItemsEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerTakeLecternBookListener(final PlayerTakeLecternBookListener listener) {
+        if (this.playerTakeLecternBookEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerTakeLecternBookEventManager);
+
+        this.playerTakeLecternBookEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerTeleportListener(final PlayerTeleportListener listener) {
+        if (this.playerTeleportEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerTeleportEventManager);
+
+        this.playerTeleportEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerToggleFlightListener(final PlayerToggleFlightListener listener) {
+        if (this.playerToggleFlightEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerToggleFlightEventManager);
+
+        this.playerToggleFlightEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerToggleSneakListener(final PlayerToggleSneakListener listener) {
+        if (this.playerToggleSneakEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerToggleSneakEventManager);
+
+        this.playerToggleSneakEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerToggleSprintListener(final PlayerToggleSprintListener listener) {
+        if (this.playerToggleSprintEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerToggleSprintEventManager);
+
+        this.playerToggleSprintEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerUnleashEntityListener(final PlayerUnleashEntityListener listener) {
+        if (this.playerUnleashEntityEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerUnleashEntityEventManager);
+
+        this.playerUnleashEntityEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerUnregisterChannelListener(final PlayerUnregisterChannelListener listener) {
+        if (this.playerUnregisterChannelEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerUnregisterChannelEventManager);
+
+        this.playerUnregisterChannelEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerVelocityListener(final PlayerVelocityListener listener) {
+        if (this.playerVelocityEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerVelocityEventManager);
+
+        this.playerVelocityEventManager.EVENT_INVOKES.add(listener);
     }
 
     // Raid Events

@@ -12,7 +12,7 @@ public interface PlayerEggThrowListener {
 
     void onInvoke(final PlayerEggThrowEvent event);
 
-    class PlayerEggThrowEvent implements Listener {
+    class PlayerEggThrowEventManager implements Listener {
 
         public final List<PlayerEggThrowListener> EVENT_INVOKES = new ArrayList<>();
 
