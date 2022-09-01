@@ -5,10 +5,8 @@ import de.florianmichael.bukkitextensions.lambda_events_v1.block.*;
 import de.florianmichael.bukkitextensions.lambda_events_v1.entity.*;
 import de.florianmichael.bukkitextensions.lambda_events_v1.player.PlayerJoinListener;
 import de.florianmichael.bukkitextensions.spigot.SpigotPluginWrapper;
+import org.bukkit.entity.Creeper;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.LingeringPotionSplashEvent;
-
-import java.lang.reflect.Field;
 
 public class LambdaEvents extends BukkitExtensionBase {
 
@@ -151,17 +149,733 @@ public class LambdaEvents extends BukkitExtensionBase {
         this.blockBurnEventManager.EVENT_INVOKES.add(listener);
     }
 
-    public void invokeEnchantItemListener(final EnchantItemListener listener) {
-        if (this.enchantItemEventManager.EVENT_INVOKES.isEmpty())
-            this.registerListener(this.enchantItemEventManager);
+    public void invokeBlockCanBuildListener(final BlockCanBuildListener listener) {
+        if (this.blockCanBuildEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.blockCanBuildEventManager);
 
-        this.enchantItemEventManager.EVENT_INVOKES.add(listener);
+        this.blockCanBuildEventManager.EVENT_INVOKES.add(listener);
     }
 
-    public void invokePlayerJoinListener(final PlayerJoinListener listener) {
-        if (this.playerJoinEventManager.EVENT_INVOKES.isEmpty())
-            this.registerListener(this.playerJoinEventManager);
+    public void invokeBlockCookEventListener(final BlockCookListener listener) {
+        if (this.blockCookEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.blockCookEventManager);
 
-        this.playerJoinEventManager.EVENT_INVOKES.add(listener);
+        this.blockCookEventManager.EVENT_INVOKES.add(listener);
     }
+
+    public void invokeBlockDamageAbortListener(final BlockDamageAbortListener listener) {
+        if (this.blockDamageAbortEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.blockDamageAbortEventManager);
+
+        this.blockDamageAbortEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeBlockDamageListener(final BlockDamageListener listener) {
+        if (this.blockDamageAbortEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.blockDamageEventManager);
+
+        this.blockDamageEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeBlockDispenseArmorListener(final BlockDispenseArmorListener listener) {
+        if (this.blockDispenseArmorEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.blockDispenseArmorEventManager);
+
+        this.blockDispenseArmorEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeBlockDispenseListener(final BlockDispenseListener listener) {
+        if (this.blockDispenseEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.blockDispenseEventManager);
+
+        this.blockDispenseEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeBlockDropItemListener(final BlockDropItemListener listener) {
+        if (this.blockDropItemManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.blockDropItemManager);
+
+        this.blockDropItemManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeBlockExpListener(final BlockExpListener listener) {
+        if (this.blockExpEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.blockExpEventManager);
+
+        this.blockExpEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeBlockExplodeListener(final BlockExplodeListener listener) {
+        if (this.blockExplodeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.blockExplodeEventManager);
+
+        this.blockExplodeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeBlockFadeListener(final BlockFadeListener listener) {
+        if (this.blockFadeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.blockFadeEventManager);
+
+        this.blockFadeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeBlockFertilize(final BlockFertilizeListener listener) {
+        if (this.blockFertilizeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.blockFertilizeEventManager);
+
+        this.blockFertilizeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeBlockFormListener(final BlockFormListener listener) {
+        if (this.blockFormEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.blockFormEventManager);
+
+        this.blockFormEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeBlockFromToListener(final BlockFromToListener listener) {
+        if (this.blockFromToEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.blockFromToEventManager);
+
+        this.blockFromToEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeBlockGrowListener(final BlockGrowListener listener) {
+        if (this.blockGrowEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.blockGrowEventManager);
+
+        this.blockGrowEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeBlockIgniteListener(final BlockIgniteListener listener) {
+        if (this.blockIgniteEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.blockIgniteEventManager);
+
+        this.blockIgniteEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeBlockListener(final BlockListener listener) {
+        if (this.blockEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.blockEventManager);
+
+        this.blockEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeBlockMultiPlaceListener(final BlockMultiPlaceListener listener) {
+        if (this.blockMultiPlaceEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.blockMultiPlaceEventManager);
+
+        this.blockMultiPlaceEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeBlockPhysicsListener(final BlockPhysicsListener listener) {
+        if (this.blockPhysicsEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.blockPhysicsEventManager);
+
+        this.blockPhysicsEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeBlockPistonExtendListener(final BlockPistonExtendListener listener) {
+        if (this.blockPistonEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.blockPistonEventManager);
+
+        this.blockPistonExtendEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeBlockPistonRetractListener(final BlockPistonRetractListener listener) {
+        if (this.blockPistonRetractEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.blockPistonEventManager);
+
+        this.blockPistonRetractEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeBlockPistonListener(final BlockPistonListener listener) {
+        if (this.blockPistonEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.blockPistonEventManager);
+
+        this.blockPistonEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeBlockPlaceListener(final BlockPlaceListener listener) {
+        if (this.blockPlaceEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.blockPlaceEventManager);
+
+        this.blockPlaceEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeBlockReceiveGameListener(final BlockReceiveGameListener listener) {
+        if (this.blockReceiveGameEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.blockReceiveGameEventManager);
+
+        this.blockReceiveGameEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeBlockRedstoneListener(final BlockRedstoneListener listener) {
+        if (this.blockRedstoneEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.blockRedstoneEventManager);
+
+        this.blockRedstoneEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeBlockShearEntityListener(final BlockShearEntityListener listener) {
+        if (this.blockShearEntityEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.blockShearEntityEventManager);
+
+        this.blockShearEntityEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeBlockSpreadListener(final BlockSpreadListener listener) {
+        if (this.blockSpreadEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.blockSpreadEventManager);
+
+        this.blockSpreadEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeCauldronLevelChangeListener(final CauldronLevelChangeListener listener) {
+        if (this.cauldronLevelChangeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.cauldronLevelChangeEventManager);
+
+        this.cauldronLevelChangeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityBlockFormListener(final EntityBlockFormListener listener) {
+        if (this.entityBlockFormEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityBlockFormEventManager);
+
+        this.entityBlockFormEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeFluidLevelChangeListener(final FluidLevelChangeListener listener) {
+        if (this.fluidLevelChangeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.fluidLevelChangeEventManager);
+
+        this.fluidLevelChangeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeLeavesDecayListener(final LeavesDecayListener listener) {
+        if (this.leavesDecayEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.leavesDecayEventManager);
+
+        this.leavesDecayEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeMoistureChangeListener(final MoistureChangeListener listener) {
+        if (this.moistureChangeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.moistureChangeEventManager);
+
+        this.moistureChangeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeNotePlayListener(final NotePlayListener listener) {
+        if (this.notePlayEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.notePlayEventManager);
+
+        this.notePlayEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeSignChangeListener(final SignChangeListener listener) {
+        if (this.signChangeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.signChangeEventManager);
+
+        this.signChangeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeSpongeAbsorbListener(final SpongeAbsorbListener listener) {
+        if (this.spongeAbsorbEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.spongeAbsorbEventManager);
+
+        this.spongeAbsorbEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeAreaEffectCloudApplyListener(final AreaEffectCloudApplyListener listener) {
+        if (this.areaEffectCloudApplyEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.areaEffectCloudApplyEventManager);
+
+        this.areaEffectCloudApplyEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeArrowBodyCountChangeListener(final ArrowBodyCountChangeListener listener) {
+        if (this.arrowBodyCountChangeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.arrowBodyCountChangeEventManager);
+
+        this.arrowBodyCountChangeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeBatToggleSleepListener(final BatToggleSleepListener listener) {
+        if (this.batToggleSleepEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.batToggleSleepEventManager);
+
+        this.batToggleSleepEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeCreatureSpawnListener(final CreatureSpawnListener listener) {
+        if (this.creatureSpawnEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.creatureSpawnEventManager);
+
+        this.creatureSpawnEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeCreeperPowerListener(final CreeperPowerListener listener) {
+        if (this.creeperPowerEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.creeperPowerEventManager);
+
+        this.creeperPowerEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEnderDragonChangePhaseListener(final EnderDragonChangePhaseListener listener) {
+        if (this.enderDragonChangePhaseEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.enderDragonChangePhaseEventManager);
+
+        this.enderDragonChangePhaseEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityAirChangeListener(final EntityAirChangeListener listener) {
+        if (this.entityAirChangeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityAirChangeEventManager);
+
+        this.entityAirChangeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityBreakDoorListener(final EntityBreakDoorListener listener) {
+        if (this.entityBreakDoorEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityBreakDoorEventManager);
+
+        this.entityBreakDoorEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityBreedListener(final EntityBreedListener listener) {
+        if (this.entityBreedEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityBreedEventManager);
+
+        this.entityBreedEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityChangeBlockListener(final EntityChangeBlockListener listener) {
+        if (this.entityChangeBlockEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityChangeBlockEventManager);
+
+        this.entityChangeBlockEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityCombustByBlockListener(final EntityCombustByBlockListener listener) {
+        if (this.entityCombustByBlockEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityCombustByBlockEventManager);
+
+        this.entityCombustByBlockEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityCombustByEntityListener(final EntityCombustByEntityListener listener) {
+        if (this.entityCombustByEntityEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityCombustByEntityEventManager);
+
+        this.entityCombustByEntityEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityCombustListener(final EntityCombustListener listener) {
+        if (this.entityCombustEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityCombustEventManager);
+
+        this.entityCombustEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityCreatePortalListener(final EntityCreatePortalListener listener) {
+        if (this.entityCreatePortalEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityCreatePortalEventManager);
+
+        this.entityCreatePortalEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityDamageByBlockListener(final EntityDamageByBlockListener listener) {
+        if (this.entityDamageByBlockEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityDamageByBlockEventManager);
+
+        this.entityDamageByBlockEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityDamageByEntityListener(final EntityDamageByEntityListener listener) {
+        if (this.entityDamageByEntityEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityDamageByEntityEventManager);
+
+        this.entityDamageByEntityEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityDamageListener(final EntityDamageListener listener) {
+        if (this.entityDamageEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityDamageEventManager);
+
+        this.entityDamageEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityDeathListener(final EntityDeathListener listener) {
+        if (this.entityDeathEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityDeathEventManager);
+
+        this.entityDeathEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityDropItemListener(final EntityDropItemListener listener) {
+        if (this.entityDropItemEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityDropItemEventManager);
+
+        this.entityDropItemEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityEnterBlockListener(final EntityEnterBlockListener listener) {
+        if (this.entityEnterBlockEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityEnterBlockEventManager);
+
+        this.entityEnterBlockEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityEnterLoveModeListener(final EntityEnterLoveModeListener listener) {
+        if (this.entityEnterLoveModeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityEnterLoveModeEventManager);
+
+        this.entityEnterLoveModeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+
+    public void invokeEntityExhaustionListener(final EntityExhaustionListener listener) {
+        if (this.entityExhaustionEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityExhaustionEventManager);
+
+        this.entityExhaustionEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityExplodeListener(final EntityExplodeListener listener) {
+        if (this.entityExplodeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityExplodeEventManager);
+
+        this.entityExplodeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityInteractListener(final EntityInteractListener listener) {
+        if (this.entityInteractEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityInteractEventManager);
+
+        this.entityInteractEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityListener(final EntityListener listener) {
+        if (this.entityEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityEventManager);
+
+        this.entityEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityPickupItemListener(final EntityPickupItemListener listener) {
+        if (this.entityPickupItemEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityPickupItemEventManager);
+
+        this.entityPickupItemEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityPlaceListener(final EntityPlaceListener listener) {
+        if (this.entityPlaceEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityPlaceEventManager);
+
+        this.entityPlaceEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityPortalEnterListener(final EntityPortalEnterListener listener) {
+        if (this.entityPortalEnterEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityPortalEnterEventManager);
+
+        this.entityPortalEnterEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityPortalExitListener(final EntityPortalExitListener listener) {
+        if (this.entityPortalExitEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityPortalExitEventManager);
+
+        this.entityPortalExitEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityPortalListener(final EntityPortalListener listener) {
+        if (this.entityPortalEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityPortalEventManager);
+
+        this.entityPortalEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityPoseChangeListener(final EntityPoseChangeListener listener) {
+        if (this.entityPoseChangeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityPoseChangeEventManager);
+
+        this.entityPoseChangeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityPotionEffectListener(final EntityPotionEffectListener listener) {
+        if (this.entityPotionEffectEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityPotionEffectEventManager);
+
+        this.entityPotionEffectEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityRegainHealthListener(final EntityRegainHealthListener listener) {
+        if (this.entityRegainHealthEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityRegainHealthEventManager);
+
+        this.entityRegainHealthEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityResurrectListener(final EntityResurrectListener listener) {
+        if (this.entityResurrectEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityResurrectEventManager);
+
+        this.entityResurrectEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityShootBowListener(final EntityShootBowListener listener) {
+        if (this.entityShootBowEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityShootBowEventManager);
+
+        this.entityShootBowEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntitySpawnListener(final EntitySpawnListener listener) {
+        if (this.entitySpawnEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entitySpawnEventManager);
+
+        this.entitySpawnEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntitySpellCastListener(final EntitySpellCastListener listener) {
+        if (this.entitySpellCastEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entitySpellCastEventManager);
+
+        this.entitySpellCastEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityTameListener(final EntityTameListener listener) {
+        if (this.entityTameEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityTameEventManager);
+
+        this.entityTameEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityTargetListener(final EntityTargetListener listener) {
+        if (this.entityTargetEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityTargetEventManager);
+
+        this.entityTargetEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityTargetLivingEntityListener(final EntityTargetLivingEntityListener listener) {
+        if (this.entityTargetLivingEntityEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityTargetLivingEntityEventManager);
+
+        this.entityTargetLivingEntityEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityTeleportListener(final EntityTeleportListener listener) {
+        if (this.entityTeleportEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityTeleportEventManager);
+
+        this.entityTeleportEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityToggleGlideListener(final EntityToggleGlideListener listener) {
+        if (this.entityToggleGlideEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityToggleGlideEventManager);
+
+        this.entityToggleGlideEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityToggleSwimListener(final EntityToggleSwimListener listener) {
+        if (this.entityToggleSwimEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityToggleSwimEventManager);
+
+        this.entityToggleSwimEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityTransformListener(final EntityTransformListener listener) {
+        if (this.entityTransformEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityTransformEventManager);
+
+        this.entityTransformEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntityUnleashListener(final EntityUnleashListener listener) {
+        if (this.entityUnleashEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entityUnleashEventManager);
+
+        this.entityUnleashEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeExpBottleListener(final ExpBottleListener listener) {
+        if (this.expBottleEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.expBottleEventManager);
+
+        this.expBottleEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeExplosionPrimeListener(final ExplosionPrimeListener listener) {
+        if (this.explosionPrimeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.explosionPrimeEventManager);
+
+        this.explosionPrimeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeFireworkExplodeListener(final FireworkExplodeListener listener) {
+        if (this.fireworkExplodeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.fireworkExplodeEventManager);
+
+        this.fireworkExplodeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeFoodLevelChangeListener(final FoodLevelChangeListener listener) {
+        if (this.foodLevelChangeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.foodLevelChangeEventManager);
+
+        this.foodLevelChangeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeHorseJumpListener(final HorseJumpListener listener) {
+        if (this.horseJumpEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.horseJumpEventManager);
+
+        this.horseJumpEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeItemDespawnListener(final ItemDespawnListener listener) {
+        if (this.itemDespawnEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.itemDespawnEventManager);
+
+        this.itemDespawnEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeItemMergeListener(final ItemMergeListener listener) {
+        if (this.itemMergeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.itemMergeEventManager);
+
+        this.itemMergeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeItemSpawnListener(final ItemSpawnListener listener) {
+        if (this.itemSpawnEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.itemSpawnEventManager);
+
+        this.itemSpawnEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeLingeringPotionSplashListener(final LingeringPotionSplashListener listener) {
+        if (this.lingeringPotionSplashEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.lingeringPotionSplashEventManager);
+
+        this.lingeringPotionSplashEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePiglinBarterListener(final PiglinBarterListener listener) {
+        if (this.piglinBarterEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.piglinBarterEventManager);
+
+        this.piglinBarterEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePigZapListener(final PigZapListener listener) {
+        if (this.pigZapEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.pigZapEventManager);
+
+        this.pigZapEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePigZombieAngerListener(final PigZombieAngerListener listener) {
+        if (this.pigZombieAngerEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.pigZombieAngerEventManager);
+
+        this.pigZombieAngerEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerDeathListener(final PlayerDeathListener listener) {
+        if (this.playerDeathEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerDeathEventManager);
+
+        this.playerDeathEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePlayerLeashEntityListener(final PlayerLeashEntityListener listener) {
+        if (this.playerLeashEntityEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.playerLeashEntityEventManager);
+
+        this.playerLeashEntityEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePotionSplashListener(final PotionSplashListener listener) {
+        if (this.potionSplashEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.potionSplashEventManager);
+
+        this.potionSplashEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeProjectileHitListener(final ProjectileHitListener listener) {
+        if (this.projectileHitEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.projectileHitEventManager);
+
+        this.projectileHitEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeProjectileLaunchListener(final ProjectileLaunchListener listener) {
+        if (this.projectileLaunchEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.projectileLaunchEventManager);
+
+        this.projectileLaunchEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeSheepDyeWoolListener(final SheepDyeWoolListener listener) {
+        if (this.sheepDyeWoolEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.sheepDyeWoolEventManager);
+
+        this.sheepDyeWoolEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeSheepRegrowWoolListener(final SheepRegrowWoolListener listener) {
+        if (this.sheepRegrowWoolEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.sheepRegrowWoolEventManager);
+
+        this.sheepRegrowWoolEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeSlimeSplitListener(final SlimeSplitListener listener) {
+        if (this.slimeSplitEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.slimeSplitEventManager);
+
+        this.slimeSplitEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeSpawnerSpawnListener(final SpawnerSpawnListener listener) {
+        if (this.spawnerSpawnEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.spawnerSpawnEventManager);
+
+        this.spawnerSpawnEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeStriderTemperatureChangeListener(final StriderTemperatureChangeListener listener) {
+        if (this.striderTemperatureChangeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.striderTemperatureChangeEventManager);
+
+        this.striderTemperatureChangeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeVillagerAcquireTradeListener(final VillagerAcquireTradeListener listener) {
+        if (this.villagerAcquireTradeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.villagerAcquireTradeEventManager);
+
+        this.villagerAcquireTradeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeVillagerCareerChangeListener(final VillagerCareerChangeListener listener) {
+        if (this.villagerCareerChangeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.villagerCareerChangeEventManager);
+
+        this.villagerCareerChangeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeVillagerReplenishTradeListener(final VillagerReplenishTradeListener listener) {
+        if (this.villagerReplenishTradeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.villagerReplenishTradeEventManager);
+
+        this.villagerReplenishTradeEventManager.EVENT_INVOKES.add(listener);
+    }
+
 }
