@@ -10,6 +10,12 @@ import de.florianmichael.bukkitextensions.lambda_events_v1.hanging.HangingPlaceL
 import de.florianmichael.bukkitextensions.lambda_events_v1.inventory.*;
 import de.florianmichael.bukkitextensions.lambda_events_v1.player.PlayerJoinListener;
 import de.florianmichael.bukkitextensions.lambda_events_v1.raid.*;
+import de.florianmichael.bukkitextensions.lambda_events_v1.server.*;
+import de.florianmichael.bukkitextensions.lambda_events_v1.vehicle.*;
+import de.florianmichael.bukkitextensions.lambda_events_v1.weather.LightningStrikeListener;
+import de.florianmichael.bukkitextensions.lambda_events_v1.weather.ThunderChangeListener;
+import de.florianmichael.bukkitextensions.lambda_events_v1.weather.WeatherChangeListener;
+import de.florianmichael.bukkitextensions.lambda_events_v1.weather.WeatherListener;
 import de.florianmichael.bukkitextensions.spigot.SpigotPluginWrapper;
 import org.bukkit.event.Listener;
 
@@ -167,6 +173,41 @@ public class LambdaEvents extends BukkitExtensionBase {
     private final RaidStopListener.RaidStopEventManager raidStopEventManager = new RaidStopListener.RaidStopEventManager();
     private final RaidTriggerListener.RaidTriggerEventManager raidTriggerEventManager = new RaidTriggerListener.RaidTriggerEventManager();
 
+    // Server Events
+    private final BroadcastMessageListener.BroadcastMessageEventManager broadcastMessageEventManager = new BroadcastMessageListener.BroadcastMessageEventManager();
+    private final MapInitializeListener.MapInitializeEventManager mapInitializeEventManager = new MapInitializeListener.MapInitializeEventManager();
+    private final PluginDisableListener.PluginDisableEventManager pluginDisableEventManager = new PluginDisableListener.PluginDisableEventManager();
+    private final PluginEnableListener.PluginEnableEventManager pluginEnableEventManager = new PluginEnableListener.PluginEnableEventManager();
+    private final PluginListener.PluginEventManager pluginEventManager = new PluginListener.PluginEventManager();
+    private final RemoteServerCommandListener.RemoteServerCommandEventManager remoteServerCommandEventManager = new RemoteServerCommandListener.RemoteServerCommandEventManager();
+    private final ServerCommandListener.ServerCommandEventManager serverCommandEventManager = new ServerCommandListener.ServerCommandEventManager();
+    private final ServerListener.ServerEventManager serverEventManager = new ServerListener.ServerEventManager();
+    private final ServerListPingListener.ServerListPingEventManager serverListPingEventManager = new ServerListPingListener.ServerListPingEventManager();
+    private final ServerLoadListener.ServerLoadEventManager serverLoadEventManager = new ServerLoadListener.ServerLoadEventManager();
+    private final ServiceListener.ServiceEventManager serviceEventManager = new ServiceListener.ServiceEventManager();
+    private final ServiceRegisterListener.ServiceRegisterEventManager serviceRegisterEventManager = new ServiceRegisterListener.ServiceRegisterEventManager();
+    private final ServiceUnregisterListener.ServiceUnregisterEventManager serviceUnregisterEventManager = new ServiceUnregisterListener.ServiceUnregisterEventManager();
+    private final TabCompleteListener.TabCompleteEventManager tabCompleteEventManager = new TabCompleteListener.TabCompleteEventManager();
+
+    // Vehicle Events
+    private final VehicleBlockCollisionListener.VehicleBlockCollisionEventManager vehicleBlockCollisionEventManager = new VehicleBlockCollisionListener.VehicleBlockCollisionEventManager();
+    private final VehicleCollisionListener.VehicleCollisionEventManager vehicleCollisionEventManager = new VehicleCollisionListener.VehicleCollisionEventManager();
+    private final VehicleCreateListener.VehicleCreateEventManager vehicleCreateEventManager = new VehicleCreateListener.VehicleCreateEventManager();
+    private final VehicleDamageListener.VehicleDamageEventManager vehicleDamageEventManager = new VehicleDamageListener.VehicleDamageEventManager();
+    private final VehicleDestroyListener.VehicleDestroyEventManager vehicleDestroyEventManager = new VehicleDestroyListener.VehicleDestroyEventManager();
+    private final VehicleEnterListener.VehicleEnterEventManager vehicleEnterEventManager = new VehicleEnterListener.VehicleEnterEventManager();
+    private final VehicleEntityCollisionListener.VehicleEntityCollisionEventManager vehicleEntityCollisionEventManager = new VehicleEntityCollisionListener.VehicleEntityCollisionEventManager();
+    private final VehicleListener.VehicleEventManager vehicleEventManager = new VehicleListener.VehicleEventManager();
+    private final VehicleExitListener.VehicleExitEventManager vehicleExitEventManager = new VehicleExitListener.VehicleExitEventManager();
+    private final VehicleMoveListener.VehicleMoveEventManager vehicleMoveEventManager = new VehicleMoveListener.VehicleMoveEventManager();
+    private final VehicleUpdateListener.VehicleUpdateEventManager vehicleUpdateEventManager = new VehicleUpdateListener.VehicleUpdateEventManager();
+
+    // Weather Events
+    private final LightningStrikeListener.LightningStrikeEventManager lightningStrikeEventManager = new LightningStrikeListener.LightningStrikeEventManager();
+    private final ThunderChangeListener.ThunderChangeEventManager thunderChangeEventManager = new ThunderChangeListener.ThunderChangeEventManager();
+    private final WeatherChangeListener.WeatherChangeEventManager weatherChangeEventManager = new WeatherChangeListener.WeatherChangeEventManager();
+    private final WeatherListener.WeatherEventManager weatherEventManager = new WeatherListener.WeatherEventManager();
+
     public LambdaEvents() {
         super("Lambda", 1, "FlorianMichael", "Tjorven-Liebe");
     }
@@ -176,7 +217,6 @@ public class LambdaEvents extends BukkitExtensionBase {
     }
 
     // Block Events
-
     public void invokeBlockBreakListener(final BlockBreakListener listener) {
         if (this.blockBreakEventManager.EVENT_INVOKES.isEmpty())
             this.registerListener(this.blockBreakEventManager);
@@ -430,7 +470,6 @@ public class LambdaEvents extends BukkitExtensionBase {
     }
 
     // Enchantment Event
-
     public void invokeEnchantItemListener(final EnchantItemListener listener) {
         if (this.enchantItemEventManager.EVENT_INVOKES.isEmpty())
             this.registerListener(this.enchantItemEventManager);
@@ -439,7 +478,6 @@ public class LambdaEvents extends BukkitExtensionBase {
     }
 
     // Entity Events
-
     public void invokeAreaEffectCloudApplyListener(final AreaEffectCloudApplyListener listener) {
         if (this.areaEffectCloudApplyEventManager.EVENT_INVOKES.isEmpty())
             this.registerListener(this.areaEffectCloudApplyEventManager);
@@ -932,7 +970,6 @@ public class LambdaEvents extends BukkitExtensionBase {
     }
 
     // Hanging Events
-
     public void invokeHangingBreakByEntityListener(final HangingBreakByEntityListener listener) {
         if (this.hangingBreakByEntityEventManager.EVENT_INVOKES.isEmpty())
             this.registerListener(this.hangingBreakByEntityEventManager);
@@ -962,7 +999,6 @@ public class LambdaEvents extends BukkitExtensionBase {
     }
 
     // Inventory Events
-
     public void invokeBrewingStandFuelListener(final BrewingStandFuelListener listener) {
         if (this.brewingStandFuelEventManager.EVENT_INVOKES.isEmpty())
             this.registerListener(this.brewingStandFuelEventManager);
@@ -1111,7 +1147,6 @@ public class LambdaEvents extends BukkitExtensionBase {
     }
 
     // Player Events
-
     public void invokePlayerJoinListener(final PlayerJoinListener listener) {
         if (this.playerJoinEventManager.EVENT_INVOKES.isEmpty())
             this.registerListener(this.playerJoinEventManager);
@@ -1120,7 +1155,6 @@ public class LambdaEvents extends BukkitExtensionBase {
     }
 
     // Raid Events
-
     public void invokeRaidListener(final RaidListener listener) {
         if (this.raidEventManager.EVENT_INVOKES.isEmpty())
             this.registerListener(this.raidEventManager);
@@ -1154,5 +1188,13 @@ public class LambdaEvents extends BukkitExtensionBase {
             this.registerListener(this.raidTriggerEventManager);
 
         this.raidTriggerEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    // Server Events
+    public void invokeBroadcastMessageListener(final BroadcastMessageListener listener) {
+        if (this.broadcastMessageEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.broadcastMessageEventManager);
+
+        this.broadcastMessageEventManager.EVENT_INVOKES.add(listener);
     }
 }
