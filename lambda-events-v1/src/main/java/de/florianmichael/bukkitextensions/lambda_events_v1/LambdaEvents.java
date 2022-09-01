@@ -2,6 +2,7 @@ package de.florianmichael.bukkitextensions.lambda_events_v1;
 
 import de.florianmichael.bukkitextensions.base.BukkitExtensionBase;
 import de.florianmichael.bukkitextensions.lambda_events_v1.block.*;
+import de.florianmichael.bukkitextensions.lambda_events_v1.enchantment.EnchantItemListener;
 import de.florianmichael.bukkitextensions.lambda_events_v1.entity.*;
 import de.florianmichael.bukkitextensions.lambda_events_v1.hanging.HangingBreakByEntityListener;
 import de.florianmichael.bukkitextensions.lambda_events_v1.hanging.HangingBreakListener;
@@ -10,8 +11,17 @@ import de.florianmichael.bukkitextensions.lambda_events_v1.hanging.HangingPlaceL
 import de.florianmichael.bukkitextensions.lambda_events_v1.inventory.*;
 import de.florianmichael.bukkitextensions.lambda_events_v1.player.PlayerJoinListener;
 import de.florianmichael.bukkitextensions.lambda_events_v1.raid.*;
+import de.florianmichael.bukkitextensions.lambda_events_v1.server.*;
+import de.florianmichael.bukkitextensions.lambda_events_v1.vehicle.*;
+import de.florianmichael.bukkitextensions.lambda_events_v1.weather.LightningStrikeListener;
+import de.florianmichael.bukkitextensions.lambda_events_v1.weather.ThunderChangeListener;
+import de.florianmichael.bukkitextensions.lambda_events_v1.weather.WeatherChangeListener;
+import de.florianmichael.bukkitextensions.lambda_events_v1.weather.WeatherListener;
+import de.florianmichael.bukkitextensions.lambda_events_v1.world.*;
 import de.florianmichael.bukkitextensions.spigot.SpigotPluginWrapper;
+import org.bukkit.Chunk;
 import org.bukkit.event.Listener;
+import org.bukkit.plugin.Plugin;
 
 public class LambdaEvents extends BukkitExtensionBase {
 
@@ -167,16 +177,80 @@ public class LambdaEvents extends BukkitExtensionBase {
     private final RaidStopListener.RaidStopEventManager raidStopEventManager = new RaidStopListener.RaidStopEventManager();
     private final RaidTriggerListener.RaidTriggerEventManager raidTriggerEventManager = new RaidTriggerListener.RaidTriggerEventManager();
 
+    // Server Events
+    private final BroadcastMessageListener.BroadcastMessageEventManager broadcastMessageEventManager = new BroadcastMessageListener.BroadcastMessageEventManager();
+    private final MapInitializeListener.MapInitializeEventManager mapInitializeEventManager = new MapInitializeListener.MapInitializeEventManager();
+    private final PluginDisableListener.PluginDisableEventManager pluginDisableEventManager = new PluginDisableListener.PluginDisableEventManager();
+    private final PluginEnableListener.PluginEnableEventManager pluginEnableEventManager = new PluginEnableListener.PluginEnableEventManager();
+    private final PluginListener.PluginEventManager pluginEventManager = new PluginListener.PluginEventManager();
+    private final RemoteServerCommandListener.RemoteServerCommandEventManager remoteServerCommandEventManager = new RemoteServerCommandListener.RemoteServerCommandEventManager();
+    private final ServerCommandListener.ServerCommandEventManager serverCommandEventManager = new ServerCommandListener.ServerCommandEventManager();
+    private final ServerListener.ServerEventManager serverEventManager = new ServerListener.ServerEventManager();
+    private final ServerListPingListener.ServerListPingEventManager serverListPingEventManager = new ServerListPingListener.ServerListPingEventManager();
+    private final ServerLoadListener.ServerLoadEventManager serverLoadEventManager = new ServerLoadListener.ServerLoadEventManager();
+    private final ServiceListener.ServiceEventManager serviceEventManager = new ServiceListener.ServiceEventManager();
+    private final ServiceRegisterListener.ServiceRegisterEventManager serviceRegisterEventManager = new ServiceRegisterListener.ServiceRegisterEventManager();
+    private final ServiceUnregisterListener.ServiceUnregisterEventManager serviceUnregisterEventManager = new ServiceUnregisterListener.ServiceUnregisterEventManager();
+    private final TabCompleteListener.TabCompleteEventManager tabCompleteEventManager = new TabCompleteListener.TabCompleteEventManager();
+
+    // Vehicle Events
+    private final VehicleBlockCollisionListener.VehicleBlockCollisionEventManager vehicleBlockCollisionEventManager = new VehicleBlockCollisionListener.VehicleBlockCollisionEventManager();
+    private final VehicleCollisionListener.VehicleCollisionEventManager vehicleCollisionEventManager = new VehicleCollisionListener.VehicleCollisionEventManager();
+    private final VehicleCreateListener.VehicleCreateEventManager vehicleCreateEventManager = new VehicleCreateListener.VehicleCreateEventManager();
+    private final VehicleDamageListener.VehicleDamageEventManager vehicleDamageEventManager = new VehicleDamageListener.VehicleDamageEventManager();
+    private final VehicleDestroyListener.VehicleDestroyEventManager vehicleDestroyEventManager = new VehicleDestroyListener.VehicleDestroyEventManager();
+    private final VehicleEnterListener.VehicleEnterEventManager vehicleEnterEventManager = new VehicleEnterListener.VehicleEnterEventManager();
+    private final VehicleEntityCollisionListener.VehicleEntityCollisionEventManager vehicleEntityCollisionEventManager = new VehicleEntityCollisionListener.VehicleEntityCollisionEventManager();
+    private final VehicleListener.VehicleEventManager vehicleEventManager = new VehicleListener.VehicleEventManager();
+    private final VehicleExitListener.VehicleExitEventManager vehicleExitEventManager = new VehicleExitListener.VehicleExitEventManager();
+    private final VehicleMoveListener.VehicleMoveEventManager vehicleMoveEventManager = new VehicleMoveListener.VehicleMoveEventManager();
+    private final VehicleUpdateListener.VehicleUpdateEventManager vehicleUpdateEventManager = new VehicleUpdateListener.VehicleUpdateEventManager();
+
+    // Weather Events
+    private final LightningStrikeListener.LightningStrikeEventManager lightningStrikeEventManager = new LightningStrikeListener.LightningStrikeEventManager();
+    private final ThunderChangeListener.ThunderChangeEventManager thunderChangeEventManager = new ThunderChangeListener.ThunderChangeEventManager();
+    private final WeatherChangeListener.WeatherChangeEventManager weatherChangeEventManager = new WeatherChangeListener.WeatherChangeEventManager();
+    private final WeatherListener.WeatherEventManager weatherEventManager = new WeatherListener.WeatherEventManager();
+
+    // World Events
+    private final ChunkListener.ChunkEventManager chunkEventManager = new ChunkListener.ChunkEventManager();
+    private final ChunkLoadListener.ChunkLoadEventManager chunkLoadEventManager = new ChunkLoadListener.ChunkLoadEventManager();
+    private final ChunkPopulateListener.ChunkPopulateEventManager chunkPopulateEventManager = new ChunkPopulateListener.ChunkPopulateEventManager();
+    private final ChunkUnloadListener.ChunkUnloadEventManager chunkUnloadEventManager = new ChunkUnloadListener.ChunkUnloadEventManager();
+    private final EntitiesLoadListener.EntitiesLoadEventManager entitiesLoadEventManager = new EntitiesLoadListener.EntitiesLoadEventManager();
+    private final EntitiesUnloadListener.EntitiesUnloadEventManager entitiesUnloadEventManager = new EntitiesUnloadListener.EntitiesUnloadEventManager();
+    private final GenericGameListener.GenericGameEventManager genericGameEventManager = new GenericGameListener.GenericGameEventManager();
+    private final LootGenerateListener.LootGenerateEventManager lootGenerateEventManager = new LootGenerateListener.LootGenerateEventManager();
+    private final PortalCreateListener.PortalCreateEventManager portalCreateEventManager = new PortalCreateListener.PortalCreateEventManager();
+    private final SpawnChangeListener.SpawnChangeEventManager spawnChangeEventManager = new SpawnChangeListener.SpawnChangeEventManager();
+    private final StructureGrowListener.StructureGrowEventManager structureGrowEventManager = new StructureGrowListener.StructureGrowEventManager();
+    private final TimeSkipListener.TimeSkipEventManager timeSkipEventManager = new TimeSkipListener.TimeSkipEventManager();
+    private final WorldListener.WorldEventManager worldEventManager = new WorldListener.WorldEventManager();
+    private final WorldInitListener.WorldInitEventManager worldInitEventManager = new WorldInitListener.WorldInitEventManager();
+    private final WorldLoadListener.WorldLoadEventManager worldLoadEventManager = new WorldLoadListener.WorldLoadEventManager();
+    private final WorldSaveListener.WorldSaveEventManager worldSaveEventManager = new WorldSaveListener.WorldSaveEventManager();
+    private final WorldUnloadListener.WorldUnloadEventManager worldUnloadEventManager = new WorldUnloadListener.WorldUnloadEventManager();
+
+    private Plugin plugin;
+
     public LambdaEvents() {
-        super("Lambda", 1, "FlorianMichael", "Tjorven-Liebe");
+        super("Lambda Events", 1, "FlorianMichael", "Tjorven-Liebe");
     }
 
     private void registerListener(final Listener listener) {
-        this.bukkitServer().getPluginManager().registerEvents(listener, SpigotPluginWrapper.instance());
+        Plugin internPlugin = this.plugin;
+
+        if (this.plugin == null)
+            internPlugin = SpigotPluginWrapper.instance();
+
+        this.bukkitServer().getPluginManager().registerEvents(listener, internPlugin);
+    }
+
+    public void setPlugin(final Plugin plugin) {
+        this.plugin = plugin;
     }
 
     // Block Events
-
     public void invokeBlockBreakListener(final BlockBreakListener listener) {
         if (this.blockBreakEventManager.EVENT_INVOKES.isEmpty())
             this.registerListener(this.blockBreakEventManager);
@@ -430,7 +504,6 @@ public class LambdaEvents extends BukkitExtensionBase {
     }
 
     // Enchantment Event
-
     public void invokeEnchantItemListener(final EnchantItemListener listener) {
         if (this.enchantItemEventManager.EVENT_INVOKES.isEmpty())
             this.registerListener(this.enchantItemEventManager);
@@ -439,7 +512,6 @@ public class LambdaEvents extends BukkitExtensionBase {
     }
 
     // Entity Events
-
     public void invokeAreaEffectCloudApplyListener(final AreaEffectCloudApplyListener listener) {
         if (this.areaEffectCloudApplyEventManager.EVENT_INVOKES.isEmpty())
             this.registerListener(this.areaEffectCloudApplyEventManager);
@@ -932,7 +1004,6 @@ public class LambdaEvents extends BukkitExtensionBase {
     }
 
     // Hanging Events
-
     public void invokeHangingBreakByEntityListener(final HangingBreakByEntityListener listener) {
         if (this.hangingBreakByEntityEventManager.EVENT_INVOKES.isEmpty())
             this.registerListener(this.hangingBreakByEntityEventManager);
@@ -962,7 +1033,6 @@ public class LambdaEvents extends BukkitExtensionBase {
     }
 
     // Inventory Events
-
     public void invokeBrewingStandFuelListener(final BrewingStandFuelListener listener) {
         if (this.brewingStandFuelEventManager.EVENT_INVOKES.isEmpty())
             this.registerListener(this.brewingStandFuelEventManager);
@@ -1111,7 +1181,6 @@ public class LambdaEvents extends BukkitExtensionBase {
     }
 
     // Player Events
-
     public void invokePlayerJoinListener(final PlayerJoinListener listener) {
         if (this.playerJoinEventManager.EVENT_INVOKES.isEmpty())
             this.registerListener(this.playerJoinEventManager);
@@ -1120,7 +1189,6 @@ public class LambdaEvents extends BukkitExtensionBase {
     }
 
     // Raid Events
-
     public void invokeRaidListener(final RaidListener listener) {
         if (this.raidEventManager.EVENT_INVOKES.isEmpty())
             this.registerListener(this.raidEventManager);
@@ -1154,5 +1222,331 @@ public class LambdaEvents extends BukkitExtensionBase {
             this.registerListener(this.raidTriggerEventManager);
 
         this.raidTriggerEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    // Server Events
+    public void invokeBroadcastMessageListener(final BroadcastMessageListener listener) {
+        if (this.broadcastMessageEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.broadcastMessageEventManager);
+
+        this.broadcastMessageEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeMapInitializeListener(final MapInitializeListener listener) {
+        if (this.mapInitializeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.mapInitializeEventManager);
+
+        this.mapInitializeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePluginDisableListener(final PluginDisableListener listener) {
+        if (this.pluginDisableEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.pluginDisableEventManager);
+
+        this.pluginDisableEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePluginEnableListener(final PluginEnableListener listener) {
+        if (this.pluginEnableEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.pluginEnableEventManager);
+
+        this.pluginEnableEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePluginListener(final PluginListener listener) {
+        if (this.pluginEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.pluginEventManager);
+
+        this.pluginEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeRemoteServerCommandListener(final RemoteServerCommandListener listener) {
+        if (this.remoteServerCommandEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.remoteServerCommandEventManager);
+
+        this.remoteServerCommandEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeServerCommandListener(final ServerCommandListener listener) {
+        if (this.serverCommandEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.serverCommandEventManager);
+
+        this.serverCommandEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeServerListener(final ServerListener listener) {
+        if (this.serverEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.serverEventManager);
+
+        this.serverEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeServerListPingListener(final ServerListPingListener listener) {
+        if (this.serverListPingEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.serverListPingEventManager);
+
+        this.serverListPingEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeServerLoadListener(final ServerLoadListener listener) {
+        if (this.serverLoadEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.serverLoadEventManager);
+
+        this.serverLoadEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeServiceListener(final ServiceListener listener) {
+        if (this.serviceEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.serviceEventManager);
+
+        this.serviceEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeServiceRegisterListener(final ServiceRegisterListener listener) {
+        if (this.serviceRegisterEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.serviceRegisterEventManager);
+
+        this.serviceRegisterEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeServiceUnregisterListener(final ServiceUnregisterListener listener) {
+        if (this.serviceUnregisterEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.serviceUnregisterEventManager);
+
+        this.serviceUnregisterEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeTabCompleteListener(final TabCompleteListener listener) {
+        if (this.tabCompleteEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.tabCompleteEventManager);
+
+        this.tabCompleteEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    // Vehicle Events
+    public void invokeVehicleBlockCollisionListener(final VehicleBlockCollisionListener listener) {
+        if (this.vehicleBlockCollisionEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.vehicleBlockCollisionEventManager);
+
+        this.vehicleBlockCollisionEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeVehicleCollisionListener(final VehicleCollisionListener listener) {
+        if (this.vehicleCollisionEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.vehicleCollisionEventManager);
+
+        this.vehicleCollisionEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeVehicleCreateListener(final VehicleCreateListener listener) {
+        if (this.vehicleCreateEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.vehicleCreateEventManager);
+
+        this.vehicleCreateEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeVehicleDamageListener(final VehicleDamageListener listener) {
+        if (this.vehicleDamageEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.vehicleDamageEventManager);
+
+        this.vehicleDamageEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeVehicleDestroyListener(final VehicleDestroyListener listener) {
+        if (this.vehicleDestroyEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.vehicleDestroyEventManager);
+
+        this.vehicleDestroyEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeVehicleEnterListener(final VehicleEnterListener listener) {
+        if (this.vehicleEnterEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.vehicleEnterEventManager);
+
+        this.vehicleEnterEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeVehicleEntityCollisionListener(final VehicleEntityCollisionListener listener) {
+        if (this.vehicleEntityCollisionEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.vehicleEntityCollisionEventManager);
+
+        this.vehicleEntityCollisionEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeVehicleListener(final VehicleListener listener) {
+        if (this.vehicleEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.vehicleEventManager);
+
+        this.vehicleEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeVehicleExitListener(final VehicleExitListener listener) {
+        if (this.vehicleExitEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.vehicleExitEventManager);
+
+        this.vehicleExitEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeVehicleMoveListener(final VehicleMoveListener listener) {
+        if (this.vehicleMoveEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.vehicleMoveEventManager);
+
+        this.vehicleMoveEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeVehicleUpdateListener(final VehicleUpdateListener listener) {
+        if (this.vehicleUpdateEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.vehicleUpdateEventManager);
+
+        this.vehicleUpdateEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    // Weather Events
+    public void invokeLightningStrikeListener(final LightningStrikeListener listener) {
+        if (this.lightningStrikeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.lightningStrikeEventManager);
+
+        this.lightningStrikeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeThunderChangeListener(final ThunderChangeListener listener) {
+        if (this.thunderChangeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.thunderChangeEventManager);
+
+        this.thunderChangeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeWeatherChangeListener(final WeatherChangeListener listener) {
+        if (this.weatherChangeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.weatherChangeEventManager);
+
+        this.weatherChangeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeWeatherListener(final WeatherListener listener) {
+        if (this.weatherEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.weatherEventManager);
+
+        this.weatherEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    // World Events
+    public void invokeChunkListener(final ChunkListener listener) {
+        if (this.chunkEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.chunkEventManager);
+
+        this.chunkEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeChunkLoadListener(final ChunkLoadListener listener) {
+        if (this.chunkLoadEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.chunkLoadEventManager);
+
+        this.chunkLoadEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeChunkPopulateListener(final ChunkPopulateListener listener) {
+        if (this.chunkPopulateEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.chunkPopulateEventManager);
+
+        this.chunkPopulateEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeChunkUnloadListener(final ChunkUnloadListener listener) {
+        if (this.chunkUnloadEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.chunkUnloadEventManager);
+
+        this.chunkUnloadEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntitiesLoadListener(final EntitiesLoadListener listener) {
+        if (this.entitiesLoadEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entitiesLoadEventManager);
+
+        this.entitiesLoadEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeEntitiesUnloadListener(final EntitiesUnloadListener listener) {
+        if (this.entitiesUnloadEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.entitiesUnloadEventManager);
+
+        this.entitiesUnloadEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeGenericGameListener(final GenericGameListener listener) {
+        if (this.genericGameEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.genericGameEventManager);
+
+        this.genericGameEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeLootGenerateListener(final LootGenerateListener listener) {
+        if (this.lootGenerateEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.lootGenerateEventManager);
+
+        this.lootGenerateEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePortalCreateListener(final PortalCreateListener listener) {
+        if (this.portalCreateEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.portalCreateEventManager);
+
+        this.portalCreateEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeSpawnChangeListener(final SpawnChangeListener listener) {
+        if (this.spawnChangeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.spawnChangeEventManager);
+
+        this.spawnChangeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeStructureGrowListener(final StructureGrowListener listener) {
+        if (this.structureGrowEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.structureGrowEventManager);
+
+        this.structureGrowEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeTimeSkipListener(final TimeSkipListener listener) {
+        if (this.timeSkipEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.timeSkipEventManager);
+
+        this.timeSkipEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeWorldListener(final WorldListener listener) {
+        if (this.worldEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.worldEventManager);
+
+        this.worldEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeWorldInitListener(final WorldInitListener listener) {
+        if (this.worldInitEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.worldInitEventManager);
+
+        this.worldInitEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeWorldLoadListener(final WorldLoadListener listener) {
+        if (this.worldLoadEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.worldLoadEventManager);
+
+        this.worldLoadEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeWorldSaveListener(final WorldSaveListener listener) {
+        if (this.worldSaveEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.worldSaveEventManager);
+
+        this.worldSaveEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeWorldUnloadListener(final WorldUnloadListener listener) {
+        if (this.worldUnloadEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.worldUnloadEventManager);
+
+        this.worldUnloadEventManager.EVENT_INVOKES.add(listener);
     }
 }

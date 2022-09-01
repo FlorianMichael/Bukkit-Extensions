@@ -1,8 +1,7 @@
-package de.florianmichael.bukkitextensions.lambda_events_v1;
+package de.florianmichael.bukkitextensions.lambda_events_v1.enchantment;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockBurnEvent;
 import org.bukkit.event.enchantment.EnchantItemEvent;
 
 import java.util.ArrayList;

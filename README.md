@@ -57,6 +57,8 @@ public static class Test extends JavaPlugin {
         
         this.lambdaEvents = (LambdaEvents) BukkitExtensions.self().get(LambdaEvents.class);
 
+        this.lambdaEvents.setPlugin(this); // Sets the Plugin which the listeners are loaded in, default the Bukkit Extensions Loader Plugin
+        
         this.lambdaEvents.invokePlayerJoinListener((event) -> {
             System.out.println(event.getPlayer().getName() + " joined the Server");
         });
