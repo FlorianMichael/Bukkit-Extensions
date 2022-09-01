@@ -43,3 +43,23 @@ public static class Test extends JavaPlugin {
     }
 }
 ```
+
+### Lambda Events v1
+
+```java
+public static class Test extends JavaPlugin {
+    
+    private final LambdaEvents lambdaEvents;
+    
+    @Override
+    public void onLoad() {
+        super.onLoad();
+        
+        this.lambdaEvents = (LambdaEvents) BukkitExtensions.self().get(LambdaEvents.class);
+
+        this.lambdaEvents.invokePlayerJoinListener((event) -> {
+            System.out.println(event.getPlayer().getName() + " joined the Server");
+        });
+    }
+}
+```
