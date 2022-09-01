@@ -18,7 +18,7 @@ whether it is useful for you or you can use it depends on you.
 
 ```java
 // Your Bukkit-Plugin Main-Class
-public static class Test extends JavaPlugin {
+public class Test extends JavaPlugin {
     
     private final CustomSchedulerAPI schedulerAPI;
     
@@ -47,7 +47,7 @@ public static class Test extends JavaPlugin {
 ### Lambda Events v1
 
 ```java
-public static class Test extends JavaPlugin {
+public class Test extends JavaPlugin {
     
     private final LambdaEvents lambdaEvents;
     
@@ -62,6 +62,39 @@ public static class Test extends JavaPlugin {
         this.lambdaEvents.invokePlayerJoinListener((event) -> {
             System.out.println(event.getPlayer().getName() + " joined the Server");
         });
+    }
+}
+```
+
+### Modern Commands v1
+
+```java
+public class Test extends JavaPlugin {
+    
+    private final ModernCommandBuilder modernCommandBuilder;
+    
+    @Override
+    public void onLoad() {
+        super.onLoad();
+        
+        this.modernCommandBuilder = (ModernCommandBuilder) BukkitExtensions.self().get(ModernCommandBuilder.class);
+    }
+
+    @Override
+    public void onEnable() {
+        this.modernCommandBuilder.registerCommand(new TestCommand());
+    }
+    
+    public static class TestCommand extends AbstractCommand {
+
+        public TestCommand() {
+            super("test");
+        }
+
+        @Override
+        public void onExecute(String label, StringArrayWrapper args) {
+            this.sendMessage("Argument Size: " + args.size());
+        }
     }
 }
 ```

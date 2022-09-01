@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenLocal()
+
+    maven {
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+
+        content {
+            includeGroup 'org.bukkit'
+            includeGroup 'org.spigotmc'
+        }
+    }
+
+    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url = 'https://oss.sonatype.org/content/repositories/central' }
+}
+
+dependencies {
+    compileOnly(project(":api-base"))
+    runtimeClasspath(project(":api-base"))
+
+    compileOnly "org.spigotmc:spigot-api:${spigot_version}"
+}
