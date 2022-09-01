@@ -14,6 +14,22 @@ so you can include only the functions you really need on your server / in your p
 Finally, for each module you will see an example code to understand what the intention of the module is, <br>
 whether it is useful for you or you can use it depends on you.
 
+#### TODO List
+
+- [x] Custom Scheduler API
+- [x] Lambda Events
+- [x] Modern Commands
+- [ ] Chat Message Builder
+- [ ] Scoreboard Creator
+- [ ] TabList Creator
+- [ ] Permission Setter
+- [ ] LabyMod Server API
+- [ ] Badlion Timer API
+- [ ] Inventory API
+- [ ] Sound API
+- [ ] Config API
+- [ ] SQL API
+
 ### Custom Scheduler API v1
 
 ```java
