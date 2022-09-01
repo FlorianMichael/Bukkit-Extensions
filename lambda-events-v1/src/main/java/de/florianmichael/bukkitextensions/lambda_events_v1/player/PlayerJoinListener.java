@@ -1,4 +1,4 @@
-package de.florianmichael.bukkitextensions.lambda_events_v1;
+package de.florianmichael.bukkitextensions.lambda_events_v1.player;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
