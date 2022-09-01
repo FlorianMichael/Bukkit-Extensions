@@ -2,6 +2,7 @@ package de.florianmichael.bukkitextensions.lambda_events_v1;
 
 import de.florianmichael.bukkitextensions.base.BukkitExtensionBase;
 import de.florianmichael.bukkitextensions.lambda_events_v1.block.*;
+import de.florianmichael.bukkitextensions.lambda_events_v1.enchantment.EnchantItemListener;
 import de.florianmichael.bukkitextensions.lambda_events_v1.entity.*;
 import de.florianmichael.bukkitextensions.lambda_events_v1.hanging.HangingBreakByEntityListener;
 import de.florianmichael.bukkitextensions.lambda_events_v1.hanging.HangingBreakListener;
@@ -1196,5 +1197,203 @@ public class LambdaEvents extends BukkitExtensionBase {
             this.registerListener(this.broadcastMessageEventManager);
 
         this.broadcastMessageEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeMapInitializeListener(final MapInitializeListener listener) {
+        if (this.mapInitializeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.mapInitializeEventManager);
+
+        this.mapInitializeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePluginDisableListener(final PluginDisableListener listener) {
+        if (this.pluginDisableEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.pluginDisableEventManager);
+
+        this.pluginDisableEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePluginEnableListener(final PluginEnableListener listener) {
+        if (this.pluginEnableEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.pluginEnableEventManager);
+
+        this.pluginEnableEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokePluginListener(final PluginListener listener) {
+        if (this.pluginEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.pluginEventManager);
+
+        this.pluginEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeRemoteServerCommandListener(final RemoteServerCommandListener listener) {
+        if (this.remoteServerCommandEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.remoteServerCommandEventManager);
+
+        this.remoteServerCommandEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeServerCommandListener(final ServerCommandListener listener) {
+        if (this.serverCommandEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.serverCommandEventManager);
+
+        this.serverCommandEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeServerListener(final ServerListener listener) {
+        if (this.serverEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.serverEventManager);
+
+        this.serverEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeServerListPingListener(final ServerListPingListener listener) {
+        if (this.serverListPingEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.serverListPingEventManager);
+
+        this.serverListPingEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeServerLoadListener(final ServerLoadListener listener) {
+        if (this.serverLoadEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.serverLoadEventManager);
+
+        this.serverLoadEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeServiceListener(final ServiceListener listener) {
+        if (this.serviceEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.serviceEventManager);
+
+        this.serviceEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeServiceRegisterListener(final ServiceRegisterListener listener) {
+        if (this.serviceRegisterEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.serviceRegisterEventManager);
+
+        this.serviceRegisterEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeServiceUnregisterListener(final ServiceUnregisterListener listener) {
+        if (this.serviceUnregisterEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.serviceUnregisterEventManager);
+
+        this.serviceUnregisterEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeTabCompleteListener(final TabCompleteListener listener) {
+        if (this.tabCompleteEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.tabCompleteEventManager);
+
+        this.tabCompleteEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    // Vehicle Events
+    public void invokeVehicleBlockCollisionListener(final VehicleBlockCollisionListener listener) {
+        if (this.vehicleBlockCollisionEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.vehicleBlockCollisionEventManager);
+
+        this.vehicleBlockCollisionEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeVehicleCollisionListener(final VehicleCollisionListener listener) {
+        if (this.vehicleCollisionEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.vehicleCollisionEventManager);
+
+        this.vehicleCollisionEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeVehicleCreateListener(final VehicleCreateListener listener) {
+        if (this.vehicleCreateEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.vehicleCreateEventManager);
+
+        this.vehicleCreateEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeVehicleDamageListener(final VehicleDamageListener listener) {
+        if (this.vehicleDamageEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.vehicleDamageEventManager);
+
+        this.vehicleDamageEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeVehicleDestroyListener(final VehicleDestroyListener listener) {
+        if (this.vehicleDestroyEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.vehicleDestroyEventManager);
+
+        this.vehicleDestroyEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeVehicleEnterListener(final VehicleEnterListener listener) {
+        if (this.vehicleEnterEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.vehicleEnterEventManager);
+
+        this.vehicleEnterEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeVehicleEntityCollisionListener(final VehicleEntityCollisionListener listener) {
+        if (this.vehicleEntityCollisionEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.vehicleEntityCollisionEventManager);
+
+        this.vehicleEntityCollisionEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeVehicleListener(final VehicleListener listener) {
+        if (this.vehicleEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.vehicleEventManager);
+
+        this.vehicleEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeVehicleExitListener(final VehicleExitListener listener) {
+        if (this.vehicleExitEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.vehicleExitEventManager);
+
+        this.vehicleExitEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeVehicleMoveListener(final VehicleMoveListener listener) {
+        if (this.vehicleMoveEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.vehicleMoveEventManager);
+
+        this.vehicleMoveEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeVehicleUpdateListener(final VehicleUpdateListener listener) {
+        if (this.vehicleUpdateEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.vehicleUpdateEventManager);
+
+        this.vehicleUpdateEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    // Weather Events
+    public void invokeLightningStrikeListener(final LightningStrikeListener listener) {
+        if (this.lightningStrikeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.lightningStrikeEventManager);
+
+        this.lightningStrikeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeThunderChangeListener(final ThunderChangeListener listener) {
+        if (this.thunderChangeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.thunderChangeEventManager);
+
+        this.thunderChangeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeWeatherChangeListener(final WeatherChangeListener listener) {
+        if (this.weatherChangeEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.weatherChangeEventManager);
+
+        this.weatherChangeEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeWeatherListener(final WeatherListener listener) {
+        if (this.weatherEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.weatherEventManager);
+
+        this.weatherEventManager.EVENT_INVOKES.add(listener);
     }
 }
