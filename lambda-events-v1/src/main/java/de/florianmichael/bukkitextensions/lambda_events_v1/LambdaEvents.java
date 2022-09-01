@@ -21,6 +21,7 @@ import de.florianmichael.bukkitextensions.lambda_events_v1.world.*;
 import de.florianmichael.bukkitextensions.spigot.SpigotPluginWrapper;
 import org.bukkit.Chunk;
 import org.bukkit.event.Listener;
+import org.bukkit.plugin.Plugin;
 
 public class LambdaEvents extends BukkitExtensionBase {
 
@@ -230,12 +231,23 @@ public class LambdaEvents extends BukkitExtensionBase {
     private final WorldSaveListener.WorldSaveEventManager worldSaveEventManager = new WorldSaveListener.WorldSaveEventManager();
     private final WorldUnloadListener.WorldUnloadEventManager worldUnloadEventManager = new WorldUnloadListener.WorldUnloadEventManager();
 
+    private Plugin plugin;
+
     public LambdaEvents() {
         super("Lambda Events", 1, "FlorianMichael", "Tjorven-Liebe");
     }
 
     private void registerListener(final Listener listener) {
-        this.bukkitServer().getPluginManager().registerEvents(listener, SpigotPluginWrapper.instance());
+        Plugin internPlugin = this.plugin;
+
+        if (this.plugin == null)
+            internPlugin = SpigotPluginWrapper.instance();
+
+        this.bukkitServer().getPluginManager().registerEvents(listener, internPlugin);
+    }
+
+    public void setPlugin(final Plugin plugin) {
+        this.plugin = plugin;
     }
 
     // Block Events
