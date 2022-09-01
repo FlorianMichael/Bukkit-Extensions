@@ -8,6 +8,7 @@ import de.florianmichael.bukkitextensions.lambda_events_v1.hanging.HangingBreakL
 import de.florianmichael.bukkitextensions.lambda_events_v1.hanging.HangingListener;
 import de.florianmichael.bukkitextensions.lambda_events_v1.hanging.HangingPlaceListener;
 import de.florianmichael.bukkitextensions.lambda_events_v1.player.PlayerJoinListener;
+import de.florianmichael.bukkitextensions.lambda_events_v1.raid.*;
 import de.florianmichael.bukkitextensions.spigot.SpigotPluginWrapper;
 import org.bukkit.event.Listener;
 
@@ -50,6 +51,9 @@ public class LambdaEvents extends BukkitExtensionBase {
     private final NotePlayListener.NotePlayEventManager notePlayEventManager = new NotePlayListener.NotePlayEventManager();
     private final SignChangeListener.SignChangeEventManager signChangeEventManager = new SignChangeListener.SignChangeEventManager();
     private final SpongeAbsorbListener.SpongeAbsorbEventManager spongeAbsorbEventManager = new SpongeAbsorbListener.SpongeAbsorbEventManager();
+
+    // Enchant Event
+    private final EnchantItemListener.EnchantItemEventManager enchantItemEventManager = new EnchantItemListener.EnchantItemEventManager();
 
     // Entity Events
     private final AreaEffectCloudApplyListener.AreaEffectCloudApplyEventManager areaEffectCloudApplyEventManager = new AreaEffectCloudApplyListener.AreaEffectCloudApplyEventManager();
@@ -123,17 +127,23 @@ public class LambdaEvents extends BukkitExtensionBase {
     private final VillagerCareerChangeListener.VillagerCareerChangeEventManager villagerCareerChangeEventManager = new VillagerCareerChangeListener.VillagerCareerChangeEventManager();
     private final VillagerReplenishTradeListener.VillagerReplenishTradeEventManager villagerReplenishTradeEventManager = new VillagerReplenishTradeListener.VillagerReplenishTradeEventManager();
 
-    // Entity Events
+    // Hanging Events
     private final HangingBreakByEntityListener.HangingBreakByEntityEventManager hangingBreakByEntityEventManager = new HangingBreakByEntityListener.HangingBreakByEntityEventManager();
     private final HangingBreakListener.HangingBreakEventManager hangingBreakEventManager = new HangingBreakListener.HangingBreakEventManager();
     private final HangingListener.HangingEventManager hangingEventManager = new HangingListener.HangingEventManager();
     private final HangingPlaceListener.HangingPlaceEventManager hangingPlaceEventManager = new HangingPlaceListener.HangingPlaceEventManager();
 
-    // Enchant Event
-    private final EnchantItemListener.EnchantItemEventManager enchantItemEventManager = new EnchantItemListener.EnchantItemEventManager();
+    // Inventory Events
 
     // Player Events
     private final PlayerJoinListener.PlayerJoinEventManager playerJoinEventManager = new PlayerJoinListener.PlayerJoinEventManager();
+
+    // Raid Events
+    private final RaidListener.RaidEventManager raidEventManager = new RaidListener.RaidEventManager();
+    private final RaidFinishListener.RaidFinishEventManager raidFinishEventManager = new RaidFinishListener.RaidFinishEventManager();
+    private final RaidSpawnWaveListener.RaidSpawnWaveEventManager raidSpawnWaveEventManager = new RaidSpawnWaveListener.RaidSpawnWaveEventManager();
+    private final RaidStopListener.RaidStopEventManager raidStopEventManager = new RaidStopListener.RaidStopEventManager();
+    private final RaidTriggerListener.RaidTriggerEventManager raidTriggerEventManager = new RaidTriggerListener.RaidTriggerEventManager();
 
     public LambdaEvents() {
         super("Lambda", 1, "FlorianMichael", "Tjorven-Liebe");
@@ -395,6 +405,15 @@ public class LambdaEvents extends BukkitExtensionBase {
             this.registerListener(this.spongeAbsorbEventManager);
 
         this.spongeAbsorbEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    // Enchantment Event
+
+    public void invokeEnchantItemListener(final EnchantItemListener listener) {
+        if (this.enchantItemEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.enchantItemEventManager);
+
+        this.enchantItemEventManager.EVENT_INVOKES.add(listener);
     }
 
     // Entity Events
@@ -920,6 +939,9 @@ public class LambdaEvents extends BukkitExtensionBase {
         this.hangingPlaceEventManager.EVENT_INVOKES.add(listener);
     }
 
+    // Inventory Events
+
+
     // Player Events
 
     public void invokePlayerJoinListener(final PlayerJoinListener listener) {
@@ -929,12 +951,40 @@ public class LambdaEvents extends BukkitExtensionBase {
         this.playerJoinEventManager.EVENT_INVOKES.add(listener);
     }
 
-    // Enchantment Event
+    // Raid Events
 
-    public void invokeEnchantItemListener(final EnchantItemListener listener) {
-        if (this.enchantItemEventManager.EVENT_INVOKES.isEmpty())
-            this.registerListener(this.enchantItemEventManager);
+    public void invokeRaidListener(final RaidListener listener) {
+        if (this.raidEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.raidEventManager);
 
-        this.enchantItemEventManager.EVENT_INVOKES.add(listener);
+        this.raidEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeRaidFinishListener(final RaidFinishListener listener) {
+        if (this.raidFinishEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.raidFinishEventManager);
+
+        this.raidFinishEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeRaidSpawnWaveListener(final RaidSpawnWaveListener listener) {
+        if (this.raidSpawnWaveEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.raidSpawnWaveEventManager);
+
+        this.raidSpawnWaveEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeRaidStopListener(final RaidStopListener listener) {
+        if (this.raidStopEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.raidStopEventManager);
+
+        this.raidStopEventManager.EVENT_INVOKES.add(listener);
+    }
+
+    public void invokeRaidTriggerListener(final RaidTriggerListener listener) {
+        if (this.raidTriggerEventManager.EVENT_INVOKES.isEmpty())
+            this.registerListener(this.raidTriggerEventManager);
+
+        this.raidTriggerEventManager.EVENT_INVOKES.add(listener);
     }
 }
