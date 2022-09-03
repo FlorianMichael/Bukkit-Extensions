@@ -9,26 +9,20 @@ It is meant to break down many things like creating scoreboards, tablists, NPCs 
 Bukkit Extensions is modular, which means that each API is a module in itself and depends only on the api-base, <br>
 so you can include only the functions you really need on your server / in your project.
 
+## Build Project
+1. Clone the repository using `git clone https://github.com/FlorianMichael/Bukkit-Extensions`.
+2. CD into the local repository.
+3. Run `gradlew shadowJar`
+4. The jar will be available in `"Project Dir"/build/libs/Bukkit-Extensions-shadow.jar`
+
+## Contributing
+If you want to add your own module, please make sure that your module is in the same code style as the others, <br>
+that it has an example in the README and in the demo module.
+
 ## Examples
 
 Finally, for each module you will see an example code to understand what the intention of the module is, <br>
 whether it is useful for you or you can use it depends on you.
-
-#### TODO List
-
-- [x] Custom Scheduler API
-- [x] Lambda Events
-- [x] Modern Commands
-- [ ] Chat Message Builder
-- [ ] Scoreboard Creator
-- [ ] TabList Creator
-- [ ] Permission Setter
-- [ ] LabyMod Server API
-- [ ] Badlion Timer API
-- [ ] Inventory API
-- [ ] Sound API
-- [ ] Config API
-- [ ] SQL API
 
 ### Custom Scheduler API v1
 
