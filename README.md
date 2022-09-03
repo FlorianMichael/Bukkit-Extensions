@@ -114,3 +114,23 @@ public class Test extends JavaPlugin {
     }
 }
 ```
+
+### Lambda Events v2
+
+```java
+public class Test extends JavaPlugin {
+    
+    private final DynamicLambdaEvents<?> dynamicLambdaEvents;
+    
+    @Override
+    public void onLoad() {
+        super.onLoad();
+        
+        this.dynamicLambdaEvents = (DynamicLambdaEvents<?>) BukkitExtensions.self().get(DynamicLambdaEvents.class);
+
+        dynamicLambdaEvents.register(PlayerJoinEvent.class, (event -> {
+            System.out.println(event.getPlayer().getName() + " joined the Server");
+        }));
+    }
+}
+```

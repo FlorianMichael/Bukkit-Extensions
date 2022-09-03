@@ -3,4 +3,5 @@ include 'custom-scheduler-v1'
 include 'lambda-events-v1'
 include 'modern-commands-v1'
 include 'bungeecord-sender-v1'
+include 'lambda-events-v2'
 
