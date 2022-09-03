@@ -1,0 +1,5 @@
+name: Demo
+version: 1.0
+author: Not Set
+main: de.florianmichael.bukkitextensions.demo.ExtensionDemo
+api-version: 1.13
