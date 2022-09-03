@@ -29,14 +29,23 @@ public class DynamicLambdaEvents<T extends Event> extends BukkitExtensionBase {
      * The default value for the ignoreCancelled state of the handler if none is specified
      */
     private final boolean DEFAULT_IGNORE_CANCELLED = false;
-    private final HandlerList handlerList;
-    private final Class<T> eventClass;
-    private final RegisteredListener registeredListener;
+    private HandlerList handlerList;
+    private Class<T> eventClass;
+    private RegisteredListener registeredListener;
 
-    private DynamicLambdaEvents(final HandlerList handlerList, final Class<T> eventClass, final RegisteredListener registeredListener) {
+    public DynamicLambdaEvents() {
         super("Dynamic Lambda Events", 1, "Lenni0451");
+    }
+
+    public void setHandlerList(HandlerList handlerList) {
         this.handlerList = handlerList;
+    }
+
+    public void setEventClass(Class<T> eventClass) {
         this.eventClass = eventClass;
+    }
+
+    public void setRegisteredListener(RegisteredListener registeredListener) {
         this.registeredListener = registeredListener;
     }
 
@@ -103,7 +112,12 @@ public class DynamicLambdaEvents<T extends Event> extends BukkitExtensionBase {
     public <T extends Event> DynamicLambdaEvents<T> register(final Plugin plugin, final Class<T> eventClass, final LambdaHandler<T> handler, final EventPriority priority, final boolean ignoreCancelled) {
         HandlerList handlerList = getHandlerList(eventClass);
         RegisteredListener registeredListener = new RegisteredListener(handler, new LambdaEventExecutor<>(eventClass, handler), priority, plugin, ignoreCancelled);
-        DynamicLambdaEvents<T> lambdaEvents = new DynamicLambdaEvents<>(handlerList, eventClass, registeredListener);
+        DynamicLambdaEvents<T> lambdaEvents = new DynamicLambdaEvents<>();
+
+        lambdaEvents.setHandlerList(handlerList);
+        lambdaEvents.setEventClass(eventClass);
+        lambdaEvents.setRegisteredListener(registeredListener);
+
         lambdaEvents.register();
         return lambdaEvents;
     }

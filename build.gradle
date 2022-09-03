@@ -1,3 +1,25 @@
 plugins {
     id 'java'
+
+    id 'com.github.johnrengelman.shadow' version '7.0.0'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation(project(":api-base"))
+
+    implementation(project(":custom-scheduler-v1"))
+    implementation(project(":lambda-events-v1"))
+    implementation(project(":bungeecord-sender-v1"))
+    implementation(project(":modern-commands-v1"))
+    implementation(project(":lambda-events-v2"))
+}
+
+shadowJar {
+    archiveClassifier.set('shadow')
+    compileJava.options.encoding = 'UTF-8'
 }
