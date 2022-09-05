@@ -1,5 +1,6 @@
 # Bukkit-Extensions
-Powerful Bukkit API for Plugin Developers
+Powerful Bukkit API for Plugin Developers <br>
+[![](https://jitpack.io/v/FlorianMichael/Bukkit-Extensions.svg)](https://jitpack.io/#FlorianMichael/Bukkit-Extensions)
 
 ## The idea
 The idea behind Bukkit Extensions is to develop an API that makes it easier for programmers from all over the world to use Bukkit. <br>
