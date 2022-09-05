@@ -1,5 +1,5 @@
 # Bukkit-Extensions
-Powerful Bukkit API for Plugin Developers
+Powerful Bukkit API for Plugin Developers <br>
 [![](https://jitpack.io/v/FlorianMichael/Bukkit-Extensions.svg)](https://jitpack.io/#FlorianMichael/Bukkit-Extensions)
 
 ## The idea
