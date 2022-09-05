@@ -28,7 +28,7 @@ public class BungeeCordTransmitter extends BukkitExtensionBase implements Plugin
         output.writeUTF("Connect");
         output.writeUTF(serverName);
 
-        this.doLogic(player, output);
+        this.doMagic(player, output);
     }
 
     public void sendPlayerToServer(final String name, final String serverName) {
@@ -41,7 +41,7 @@ public class BungeeCordTransmitter extends BukkitExtensionBase implements Plugin
         output.writeUTF(name);
         output.writeUTF(serverName);
 
-        this.doLogic(first, output);
+        this.doMagic(first, output);
     }
 
     private Player firstExists() {
@@ -55,7 +55,7 @@ public class BungeeCordTransmitter extends BukkitExtensionBase implements Plugin
         return ByteStreams.newDataOutput();
     }
 
-    private void doLogic(final Player player, final ByteArrayDataOutput output) {
+    private void doMagic(final Player player, final ByteArrayDataOutput output) {
         player.sendPluginMessage(SpigotPluginWrapper.instance(), "BungeeCord", output.toByteArray());
     }
 
