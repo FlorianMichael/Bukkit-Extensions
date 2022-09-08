@@ -1,6 +1,6 @@
 package de.florianmichael.bukkitextensions.lambda_events_v1;
 
-import de.florianmichael.bukkitextensions.base.BukkitExtensionBase;
+import de.florianmichael.bukkitextensions.api_base.BukkitExtensionBase;
 import de.florianmichael.bukkitextensions.lambda_events_v1.block.*;
 import de.florianmichael.bukkitextensions.lambda_events_v1.enchantment.EnchantItemListener;
 import de.florianmichael.bukkitextensions.lambda_events_v1.entity.*;
@@ -18,8 +18,7 @@ import de.florianmichael.bukkitextensions.lambda_events_v1.weather.ThunderChange
 import de.florianmichael.bukkitextensions.lambda_events_v1.weather.WeatherChangeListener;
 import de.florianmichael.bukkitextensions.lambda_events_v1.weather.WeatherListener;
 import de.florianmichael.bukkitextensions.lambda_events_v1.world.*;
-import de.florianmichael.bukkitextensions.spigot.SpigotPluginWrapper;
-import org.bukkit.Chunk;
+import de.florianmichael.bukkitextensions.api_base.SpigotPluginWrapper;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 

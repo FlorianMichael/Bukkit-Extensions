@@ -1,4 +1,4 @@
-package de.florianmichael.bukkitextensions.spigot;
+package de.florianmichael.bukkitextensions.api_base;
 
 import org.bukkit.plugin.java.JavaPlugin;
 

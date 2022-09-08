@@ -1,7 +1,4 @@
-package de.florianmichael.bukkitextensions;
-
-import de.florianmichael.bukkitextensions.base.BukkitExtensionBase;
-import de.florianmichael.bukkitextensions.error.IErrorListener;
+package de.florianmichael.bukkitextensions.api_base;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;

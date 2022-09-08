@@ -1,4 +1,4 @@
 name: Bukkit-Extensions
 version: 1.0
 author: FlorianMichael
-main: de.florianmichael.bukkitextensions.spigot.SpigotPluginWrapper
+main: de.florianmichael.bukkitextensions.api_base.SpigotPluginWrapper

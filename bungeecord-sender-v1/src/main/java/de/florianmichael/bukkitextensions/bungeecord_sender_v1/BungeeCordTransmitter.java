@@ -3,8 +3,8 @@ package de.florianmichael.bukkitextensions.bungeecord_sender_v1;
 import com.google.common.collect.Iterables;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
-import de.florianmichael.bukkitextensions.base.BukkitExtensionBase;
-import de.florianmichael.bukkitextensions.spigot.SpigotPluginWrapper;
+import de.florianmichael.bukkitextensions.api_base.BukkitExtensionBase;
+import de.florianmichael.bukkitextensions.api_base.SpigotPluginWrapper;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 

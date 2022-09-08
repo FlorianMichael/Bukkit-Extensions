@@ -1,7 +1,7 @@
 package de.florianmichael.bukkitextensions.lambda_events_v2;
 
-import de.florianmichael.bukkitextensions.base.BukkitExtensionBase;
-import de.florianmichael.bukkitextensions.spigot.SpigotPluginWrapper;
+import de.florianmichael.bukkitextensions.api_base.BukkitExtensionBase;
+import de.florianmichael.bukkitextensions.api_base.SpigotPluginWrapper;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;

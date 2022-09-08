@@ -1,6 +1,4 @@
-package de.florianmichael.bukkitextensions.error;
-
-import de.florianmichael.bukkitextensions.base.BukkitExtensionBase;
+package de.florianmichael.bukkitextensions.api_base;
 
 public interface IErrorListener {
 

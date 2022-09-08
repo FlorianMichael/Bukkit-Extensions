@@ -1,6 +1,6 @@
 package de.florianmichael.bukkitextensions.modern_commands_v1;
 
-import de.florianmichael.bukkitextensions.base.BukkitExtensionBase;
+import de.florianmichael.bukkitextensions.api_base.BukkitExtensionBase;
 import org.bukkit.command.CommandMap;
 
 import java.lang.reflect.Field;

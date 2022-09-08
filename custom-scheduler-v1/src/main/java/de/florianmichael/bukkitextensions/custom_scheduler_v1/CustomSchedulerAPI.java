@@ -1,7 +1,7 @@
 package de.florianmichael.bukkitextensions.custom_scheduler_v1;
 
-import de.florianmichael.bukkitextensions.base.BukkitExtensionBase;
-import de.florianmichael.bukkitextensions.spigot.SpigotPluginWrapper;
+import de.florianmichael.bukkitextensions.api_base.BukkitExtensionBase;
+import de.florianmichael.bukkitextensions.api_base.SpigotPluginWrapper;
 
 import java.util.HashMap;
 import java.util.List;

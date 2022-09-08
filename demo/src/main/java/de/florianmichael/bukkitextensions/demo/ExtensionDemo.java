@@ -1,6 +1,6 @@
 package de.florianmichael.bukkitextensions.demo;
 
-import de.florianmichael.bukkitextensions.BukkitExtensions;
+import de.florianmichael.bukkitextensions.api_base.BukkitExtensions;
 import de.florianmichael.bukkitextensions.bungeecord_sender_v1.BungeeCordTransmitter;
 import de.florianmichael.bukkitextensions.custom_scheduler_v1.CustomSchedulerAPI;
 import de.florianmichael.bukkitextensions.lambda_events_v1.LambdaEvents;

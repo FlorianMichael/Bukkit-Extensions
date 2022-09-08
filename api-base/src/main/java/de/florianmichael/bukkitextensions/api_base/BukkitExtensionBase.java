@@ -1,7 +1,5 @@
-package de.florianmichael.bukkitextensions.base;
+package de.florianmichael.bukkitextensions.api_base;
 
-import de.florianmichael.bukkitextensions.BukkitExtensions;
-import de.florianmichael.bukkitextensions.spigot.SpigotPluginWrapper;
 import org.bukkit.Server;
 
 public class BukkitExtensionBase {
