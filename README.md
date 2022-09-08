@@ -14,7 +14,7 @@ so you can include only the functions you really need on your server / in your p
 1. Clone the repository using `git clone https://github.com/FlorianMichael/Bukkit-Extensions`.
 2. CD into the local repository.
 3. In the build.gradle file of the project, you can now specify which modules should be added to the finished jar, but please remember that the api-base must always remain inside!
-![img.png](img.png)
+![img.png](github_pictures/module_struct.png)
 4. Run `gradlew shadowJar`
 5. The jar will be available in `"Project Dir"/build/libs/Bukkit-Extensions-shadow.jar`
 
