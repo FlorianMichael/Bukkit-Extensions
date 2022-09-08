@@ -9,14 +9,19 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation(project(":api-base"))
+def modules = [
+        "api-base",
 
-    implementation(project(":custom-scheduler-v1"))
-    implementation(project(":lambda-events-v1"))
-    implementation(project(":bungeecord-sender-v1"))
-    implementation(project(":modern-commands-v1"))
-    implementation(project(":lambda-events-v2"))
+        "custom-scheduler-v1",
+        "modern-commands-v1",
+        "bungeecord-sender-v1",
+        "lambda-events-v2"
+]
+
+dependencies {
+    for (final def module in modules) {
+        implementation(project(":" + module))
+    }
 }
 
 shadowJar {

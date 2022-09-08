@@ -26,7 +26,10 @@ public class ExtensionDemo extends JavaPlugin {
         super.onLoad();
 
         this.customSchedulerAPI = (CustomSchedulerAPI) BukkitExtensions.self().get(CustomSchedulerAPI.class);
+
+        // Deprecated, use DynamicLambdaEvents
         this.lambdaEvents = (LambdaEvents) BukkitExtensions.self().get(LambdaEvents.class);
+
         this.modernCommandBuilder = (ModernCommandBuilder) BukkitExtensions.self().get(ModernCommandBuilder.class);
         this.bungeeCordTransmitter = (BungeeCordTransmitter) BukkitExtensions.self().get(BungeeCordTransmitter.class);
         this.dynamicLambdaEvents = (DynamicLambdaEvents<?>) BukkitExtensions.self().get(DynamicLambdaEvents.class);
@@ -48,7 +51,7 @@ public class ExtensionDemo extends JavaPlugin {
             }
         });
 
-        this.lambdaEvents.invokePlayerJoinListener((event -> System.out.println("Player joined: " + event.getPlayer().getName())));
+//        this.lambdaEvents.invokePlayerJoinListener((event -> System.out.println("Player joined: " + event.getPlayer().getName())));
         this.dynamicLambdaEvents.register(PlayerQuitEvent.class, (event -> System.out.println("Player quitted: " + event.getPlayer().getName())));
     }
 }
