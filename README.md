@@ -132,3 +132,37 @@ public class Test extends JavaPlugin {
     }
 }
 ```
+
+### Storage Objects v1
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class Test extends JavaPlugin {
+
+    public static class TestTracker extends StorageObject {
+        
+        public final List<String> players = new ArrayList<>();
+    }
+
+    @Override
+    public void onEnable() {
+        Storages.self().save("Server-IP", "my-server.com");
+        
+        Storage.self().put(new TestTracker());
+    }
+
+    // Calls when a player joins
+    public void onJoin(final String name) {
+        if (!Storage.self().has(TestTracker.class)) return;
+        
+        Storage.self().get(TestTracker.class).players.add(playerName);
+    }
+    
+    @Override
+    public void onDisable() {
+        System.out.println("See you later, " + Storages.self().get("Server-IP"));
+    }
+}
+```

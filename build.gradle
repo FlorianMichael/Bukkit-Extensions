@@ -15,7 +15,8 @@ def modules = [
         "custom-scheduler-v1",
         "modern-commands-v1",
         "bungeecord-sender-v1",
-        "lambda-events-v2"
+        "lambda-events-v2",
+        "storage-objects-v1"
 ]
 
 dependencies {

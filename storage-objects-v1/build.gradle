@@ -18,21 +18,9 @@ repositories {
     maven { url = 'https://oss.sonatype.org/content/repositories/central' }
 }
 
-def modules = [
-        "api-base",
-        "custom-scheduler-v1",
-        "deprecated:lambda-events-v1",
-        "modern-commands-v1",
-        "bungeecord-sender-v1",
-        "lambda-events-v2",
-        "storage-objects-v1"
-]
-
 dependencies {
-    for (final def module in modules) {
-        compileOnly(project(":" + module))
-        runtimeClasspath(project(":" + module))
-    }
+    compileOnly(project(":api-base"))
+    runtimeClasspath(project(":api-base"))
 
     compileOnly "org.spigotmc:spigot-api:${spigot_version}"
 }
