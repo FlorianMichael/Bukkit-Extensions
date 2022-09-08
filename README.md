@@ -13,8 +13,10 @@ so you can include only the functions you really need on your server / in your p
 ## Build Project
 1. Clone the repository using `git clone https://github.com/FlorianMichael/Bukkit-Extensions`.
 2. CD into the local repository.
-3. Run `gradlew shadowJar`
-4. The jar will be available in `"Project Dir"/build/libs/Bukkit-Extensions-shadow.jar`
+3. In the build.gradle file of the project, you can now specify which modules should be added to the finished jar, but please remember that the api-base must always remain inside!
+![img.png](img.png)
+4. Run `gradlew shadowJar`
+5. The jar will be available in `"Project Dir"/build/libs/Bukkit-Extensions-shadow.jar`
 
 ## Contributing
 If you want to add your own module, please make sure that your module is in the same code style as the others, <br>
@@ -56,6 +58,7 @@ public class Test extends JavaPlugin {
 ```
 
 ### Lambda Events v1
+#### Note: This Feature isn't supported anymore, please use LambdaEvents2
 
 ```java
 public class Test extends JavaPlugin {
