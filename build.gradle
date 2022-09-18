@@ -12,6 +12,8 @@ repositories {
 def modules = [
         "api-base",
 
+        "demo",
+
         "custom-scheduler-v1",
         "modern-commands-v1",
         "bungeecord-sender-v1",

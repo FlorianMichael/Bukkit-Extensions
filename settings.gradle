@@ -6,4 +6,5 @@ include 'bungeecord-sender-v1'
 include 'lambda-events-v2'
 include 'demo'
 include 'storage-objects-v1'
+include 'task-chain-v1'
 
